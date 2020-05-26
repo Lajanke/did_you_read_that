@@ -23,13 +23,13 @@ class NavBar extends React.Component {
           <div>
             <button onClick={this.handleNavClick}>X</button>
             <ul>
-              <Link to='/'>
+              <Link to='/' onClick={this.handleNavClick}>
                 <li>HOME</li>
               </Link>
-              <Link to='/articles'>
+              <Link to='/articles' onClick={this.handleNavClick}>
                 <li>ARTICLES</li>
               </Link>
-              <Link to='/topics'>
+              <Link to='/topics' onClick={this.handleNavClick}>
                 <li>TOPICS</li>
               </Link>
             </ul>
