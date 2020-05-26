@@ -1,3 +1,15 @@
 .App {
   text-align: center;
+  
+}
+
+html, body {
+  max-width: 500px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
