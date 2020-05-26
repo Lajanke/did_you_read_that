@@ -16,7 +16,7 @@ class TopicList extends React.Component {
     getTopics = () => {
         api.fetchTopics()
             .then(topics => {
-                this.setState({ topicList: topics, isLoading: false })
+                this.setState({ topicList: topics, isLoading: false,})
             })
     }
 

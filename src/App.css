@@ -26,11 +26,15 @@ a {
   color: black;
 }
 
+img {
+  max-width: 100px;
+}
+
 article {
   border-style: solid;
   border-width: 1px 0 0 0;
   margin: auto;
-  padding: 0;
+  padding: 1rem;
 }
 
 .topic {

@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import ArticleList from './Components/ArticleList';
 import TopicsList from './Components/TopicsList';
 import Article from './Components/Article';
+import User from './Components/User';
 
 class App extends React.Component {
   state = {
@@ -21,6 +22,7 @@ class App extends React.Component {
           <ArticleList path='/articles/:slug' />
           <TopicsList path='/topics' />
           <Article path='/article/:article_id' />
+          <User path='/users/:username' />
         </Router>
       </div>
     )

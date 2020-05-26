@@ -1,9 +1,12 @@
 import axios from 'axios'
 const baseURL = 'https://lk-news.herokuapp.com/api'
 
-export const fetchArticles = ({ slug }) => {
+export const fetchArticles = ({ slug, author }) => {
     return axios.get(`${baseURL}/articles`, {
-        params: { topic: slug },
+        params: { topic: slug,
+                    author,
+        },
+
     })
         .then(({ data: { articles } }) => {
             return articles;
@@ -31,3 +34,9 @@ export const fetchTopics = () => {
         })
 }
 
+export const fetchUserByUsername = (username) => {
+    return axios.get(`${baseURL}/users/${username}`)
+        .then(({ data: { user } }) => {
+            return user;
+        })
+}
