@@ -1,15 +1,28 @@
 .App {
-  text-align: center;
-  
+  text-align: center;  
 }
 
-html, body {
+#root {
   max-width: 500px;
   margin: auto;
+  background-color: aliceblue;
 }
 
 header {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+ul {
+  margin: auto;
+  padding: 0;
+  list-style: none;
+}
+
+article {
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  margin: auto;
+  padding: 0;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './Components/Header';
+import ArticleList from './Components/ArticleList';
 
 class App extends React.Component {
   state = {
@@ -11,6 +12,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+        <ArticleList />
       </div>
     )
   }
