@@ -1,33 +1,41 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
 class NavBar extends React.Component {
   state = {
-      navOpen: false,
+    navOpen: false,
   }
 
   handleNavClick = () => {
-      const { navOpen } = this.state
-    this.setState({navOpen: !navOpen})
+    const { navOpen } = this.state
+    this.setState({ navOpen: !navOpen })
   }
 
   render() {
+    const { navOpen } = this.state;
     return (
       <nav>
-          {!this.state.navOpen &&
-            <button onClick={this.handleNavClick}>MENU</button>
-          }
-          
-          { this.state.navOpen &&
-            <div>
+        {!navOpen &&
+          <button onClick={this.handleNavClick}>MENU</button>
+        }
+
+        {navOpen &&
+          <div>
             <button onClick={this.handleNavClick}>X</button>
             <ul>
-                <li>Home</li>
-                <li>Articles</li>
-                <li>Topics</li>
+              <Link to='/'>
+                <li>HOME</li>
+              </Link>
+              <Link to='/articles'>
+                <li>ARTICLES</li>
+              </Link>
+              <Link to='/topics'>
+                <li>TOPICS</li>
+              </Link>
             </ul>
-            </div>
-          }
-        </nav>
+          </div>
+        }
+      </nav>
     )
   }
 }

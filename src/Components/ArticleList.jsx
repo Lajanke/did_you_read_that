@@ -3,35 +3,40 @@ import ArticleCard from './ArticleCard';
 import * as api from '../utils/api';
 
 class ArticleList extends React.Component {
-  state = {
-      articleList: [],
-      isLoading: true,
-  }
+    state = {
+        articleList: [],
+        isLoading: true,
+    }
 
-  componentDidMount() {
-      this.getArticles()
-  }
+    componentDidMount() {
+        this.getArticles()
+    }
 
-  getArticles = () => {
-      api.fetchArticles()
-      .then(articles => {
-          this.setState({articleList: articles, isLoading: false})
-      })
-  }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.slug !== this.props.slug) {
+            this.getArticles()
+        }
+    }
 
-  render() {
+    getArticles = () => {
+        api.fetchArticles(this.props)
+            .then(articles => {
+                this.setState({ articleList: articles, isLoading: false })
+            })
+    }
 
-      const { articleList, isLoading } = this.state
-      if (isLoading) return <p>LOADING...</p>
-      
-    return (
-        <ul>
-            {articleList.map((article) => {
-                return <li key={article.article_id}><ArticleCard {...article} /></li>
-            })}
-        </ul>
-    )
-  }
+    render() {
+        const { articleList, isLoading } = this.state
+        if (isLoading) return <p>LOADING...</p>
+
+        return (
+            <ul>
+                {articleList.map((article) => {
+                    return <li key={article.article_id}><ArticleCard {...article} /></li>
+                })}
+            </ul>
+        )
+    }
 }
 
 export default ArticleList;
