@@ -17,6 +17,13 @@ export const fetchArticleById = (article_id) => {
         })
 }
 
+export const fetchComments = ({article_id}) => {
+    return axios.get(`${baseURL}/articles/${article_id}/comments`)
+        .then(({ data: { comments } }) => {
+            return comments;
+        })
+}
+
 export const fetchTopics = () => {
     return axios.get(`${baseURL}/topics`)
         .then(({ data: { topics } }) => {

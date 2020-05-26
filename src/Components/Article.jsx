@@ -1,6 +1,8 @@
 import React from 'react';
 import * as api from '../utils/api';
 import { Link } from '@reach/router';
+import CommentList from './CommentList';
+import VotingButtons from './VotingButtons';
 
 class Article extends React.Component {
     state = {
@@ -22,7 +24,7 @@ class Article extends React.Component {
 
     render() {
         const { isLoading } = this.state
-        const { title, topic, author, body, created_at, comment_count } = this.state.article
+        const { title, topic, author, body, created_at, comment_count, article_id } = this.state.article
         if (isLoading) return <p>LOADING...</p>
 
         return (
@@ -33,6 +35,8 @@ class Article extends React.Component {
                 <p>{body}</p>
                 <p>created at: {new Date(created_at).toDateString()}</p>
                 <p>{comment_count} comments</p>
+                <VotingButtons />
+                <CommentList article_id={article_id} />
             </article>
         )
     }
