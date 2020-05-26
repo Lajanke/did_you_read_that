@@ -1,31 +1,29 @@
 import React from 'react';
-//import axios from 'axios';
 import ArticleCard from './ArticleCard';
+import * as api from '../utils/api';
 
 class ArticleList extends React.Component {
   state = {
-      articleList: [{
-        "author": "weegembump",
-        "title": "Seafood substitutions are increasing",
-        "article_id": 33,
-        "topic": "cooking",
-        "created_at": "2018-05-30T15:59:13.341Z",
-        "votes": 0,
-        "comment_count": "6"
-      },
-      {
-        "author": "happyamy2016",
-        "title": "High Altitude Cooking",
-        "article_id": 28,
-        "topic": "cooking",
-        "created_at": "2018-05-27T03:32:28.514Z",
-        "votes": 0,
-        "comment_count": "5"
-      }]
+      articleList: [],
+      isLoading: true,
+  }
+
+  componentDidMount() {
+      this.getArticles()
+  }
+
+  getArticles = () => {
+      api.fetchArticles()
+      .then(articles => {
+          this.setState({articleList: articles, isLoading: false})
+      })
   }
 
   render() {
-      const { articleList } = this.state
+
+      const { articleList, isLoading } = this.state
+      if (isLoading) return <p>LOADING...</p>
+      
     return (
         <ul>
             {articleList.map((article) => {
