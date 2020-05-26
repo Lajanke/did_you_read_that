@@ -1,4 +1,5 @@
 import React from 'react';
+import VotingButtons from './VotingButtons';
 
 const ArticleCard = ({ title, votes, topic, author, created_at }) => {
     return (
@@ -8,6 +9,7 @@ const ArticleCard = ({ title, votes, topic, author, created_at }) => {
             <p>votes: {votes}</p>
             <p>✎{author}</p>
             <p>Created: {new Date(created_at).toDateString()}</p>
+            <VotingButtons />
         </article>
     )
 }

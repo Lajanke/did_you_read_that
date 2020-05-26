@@ -3,10 +3,17 @@ const baseURL = 'https://lk-news.herokuapp.com/api'
 
 export const fetchArticles = ({ slug }) => {
     return axios.get(`${baseURL}/articles`, {
-        params: { topic: slug }
+        params: { topic: slug },
     })
         .then(({ data: { articles } }) => {
             return articles;
+        })
+}
+
+export const fetchArticleById = (article_id) => {
+    return axios.get(`${baseURL}/articles/${article_id}`)
+        .then(({ data: { article } }) => {
+            return article;
         })
 }
 
