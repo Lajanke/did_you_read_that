@@ -40,3 +40,11 @@ export const fetchUserByUsername = (username) => {
             return user;
         })
 }
+
+export const postNewComment = ({article_id, body, user}) => {
+    const submittedComment = {'username': user, 'body': body}
+    return axios.post(`${baseURL}/articles/${article_id}/comments`, submittedComment)
+    .then(({data:{comment}}) => {
+        return comment;
+    })
+}

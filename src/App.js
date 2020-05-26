@@ -15,13 +15,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header user={this.state.user}/>
         <Router>
           <ArticleList path='/' />
           <ArticleList path='/articles' />
           <ArticleList path='/articles/:slug' />
           <TopicsList path='/topics' />
-          <Article path='/article/:article_id' />
+          <Article user={this.state.user} path='/article/:article_id' />
           <User path='/users/:username' />
         </Router>
       </div>
