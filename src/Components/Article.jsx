@@ -2,7 +2,7 @@ import React from 'react';
 import * as api from '../utils/api';
 import { Link } from '@reach/router';
 import CommentList from './CommentList';
-//import VotingButtons from './VotingButtons';
+import VotingButtons from './VotingButtons';
 
 class Article extends React.Component {
     state = {
@@ -33,9 +33,9 @@ class Article extends React.Component {
 
                 <Link to={`/articles/${topic}`}>{topic}</Link>
                 <p><Link to={`/users/${author}`}>✎{author}</Link></p>
-                <p>{votes}</p>
                 <p>{body}</p>
                 <p>created at: {new Date(created_at).toDateString()}</p>
+                <VotingButtons votes={votes} id={article_id} type={'articles'}/>
                 <p><span role='img' aria-label='speech bubble'>💬 </span>{comment_count}</p>
                 <CommentList article_id={article_id} user={this.props.user}/>
             </article>

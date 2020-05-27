@@ -9,11 +9,11 @@ class VotingButtons extends React.Component {
     }
 
     handleUpVote = (event) => {
-        const { comment_id } = this.props
+        const { id, type } = this.props
         const { upvoteClicked, downvoteClicked } = this.state
         if (!upvoteClicked && downvoteClicked) {
             const num = 2
-            api.patchCommentVotes(num, comment_id)
+            api.patchCommentVotes(num, id, type)
                 .then(() => {
                     this.setState((currentState) => {
                         return {
@@ -23,10 +23,9 @@ class VotingButtons extends React.Component {
                         }
                     })
                 })
-        } else if (!upvoteClicked && !downvoteClicked) 
-        {
+        } else if (!upvoteClicked && !downvoteClicked) {
             const num = 1
-            api.patchCommentVotes(num, comment_id)
+            api.patchCommentVotes(num, id, type)
                 .then(() => {
                     this.setState((currentState) => {
                         return {
@@ -37,7 +36,7 @@ class VotingButtons extends React.Component {
                 })
         } else {
             const num = -1
-            api.patchCommentVotes(num, comment_id)
+            api.patchCommentVotes(num, id, type)
                 .then(() => {
                     this.setState((currentState) => {
                         return {
@@ -50,11 +49,11 @@ class VotingButtons extends React.Component {
     }
 
     handleDownVote = (event) => {
-        const { comment_id } = this.props
+        const { id, type } = this.props
         const { downvoteClicked, upvoteClicked } = this.state
         if (!downvoteClicked && upvoteClicked) {
             const num = -2
-            api.patchCommentVotes(num, comment_id)
+            api.patchCommentVotes(num, id, type)
                 .then(() => {
                     this.setState((currentState) => {
                         return {
@@ -64,10 +63,9 @@ class VotingButtons extends React.Component {
                         }
                     })
                 })
-        } else if (!downvoteClicked && !upvoteClicked) 
-        {
+        } else if (!downvoteClicked && !upvoteClicked) {
             const num = -1
-            api.patchCommentVotes(num, comment_id)
+            api.patchCommentVotes(num, id, type)
                 .then(() => {
                     this.setState((currentState) => {
                         return {
@@ -76,10 +74,9 @@ class VotingButtons extends React.Component {
                         }
                     })
                 })
-        } 
-        else {
+        } else {
             const num = 1
-            api.patchCommentVotes(num, comment_id)
+            api.patchCommentVotes(num, id, type)
                 .then(() => {
                     this.setState((currentState) => {
                         return {
@@ -94,12 +91,12 @@ class VotingButtons extends React.Component {
 
     render() {
         const { votes } = this.props
-        const { votesCast } = this.state
+        const { votesCast, downvoteClicked, upvoteClicked } = this.state
         return (
             <div>
                 <p>{votes + votesCast}</p>
-                <button onClick={this.handleDownVote}>˅</button>
-                <button onClick={this.handleUpVote}>˄</button>
+                <button onClick={this.handleDownVote} className={`${downvoteClicked ? 'downClicked' : 'notClicked'}`}>˅</button>
+                <button onClick={this.handleUpVote} className={`${upvoteClicked ? 'upClicked' : 'notClicked'}`}>˄</button>
             </div>
         )
     }

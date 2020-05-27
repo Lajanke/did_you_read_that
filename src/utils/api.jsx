@@ -59,7 +59,9 @@ export const deleteCommentById = (comment_id) => {
         })
 }
 
-export const patchCommentVotes = (num, comment_id) => {
+export const patchCommentVotes = (num, id, type) => {
     console.log(num)
-    return axios.patch(`${baseURL}/comments/${comment_id}`, { inc_votes: num })
+    return axios.patch(`${baseURL}/${type}/${id}`, { inc_votes: num })
 }
+
+//${baseURL}/type/${id}

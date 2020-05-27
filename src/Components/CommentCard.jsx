@@ -28,7 +28,7 @@ class CommentCard extends React.Component {
                 <p><Link to={`/users/${author}`}>✎{author}</Link></p>
                 <p>{body}</p>
                 <p>Created: {new Date(created_at).toDateString()}</p>
-                <VotingButtons votes={votes} comment_id={comment_id}/>
+                <VotingButtons votes={votes} type='comments' id={comment_id}/>
                 {user === author &&
                 <button onClick={this.handleDeleteComment}>DELETE</button>
                 }             

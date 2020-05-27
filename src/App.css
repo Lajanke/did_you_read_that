@@ -43,3 +43,15 @@ article {
   margin: auto;
   padding: 0;
 }
+
+.upClicked {
+  background-color: darkolivegreen;
+}
+
+.downClicked {
+  background-color: tomato;
+}
+
+.notClicked {
+  background-color: aliceblue;
+}
