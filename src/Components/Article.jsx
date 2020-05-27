@@ -31,7 +31,7 @@ class Article extends React.Component {
             <article>
                 <h2>{title}</h2>
                 <Link to={`/articles/${topic}`}>{topic}</Link>
-                <p>✎{author}</p>
+                <p><Link to={`/users/${author}`}>✎{author}</Link></p>
                 <p>{body}</p>
                 <p>created at: {new Date(created_at).toDateString()}</p>
                 <p>{comment_count} comments</p>

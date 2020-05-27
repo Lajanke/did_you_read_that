@@ -48,3 +48,11 @@ export const postNewComment = ({article_id, body, user}) => {
         return comment;
     })
 }
+
+export const deleteCommentById = (comment_id) => {
+    console.log(comment_id)
+    return axios.delete(`${baseURL}/comments/${comment_id}`)
+        .then(({ data: { msg } }) => {
+            return msg;
+        })
+}
