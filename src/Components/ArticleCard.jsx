@@ -1,5 +1,5 @@
 import React from 'react';
-import VotingButtons from './VotingButtons';
+//import VotingButtons from './VotingButtons';
 
 const ArticleCard = ({ title, votes, topic, author, created_at, comment_count }) => {
     return (
@@ -8,9 +8,8 @@ const ArticleCard = ({ title, votes, topic, author, created_at, comment_count })
             <h3>{topic}</h3>
             <p>✎{author}</p>
             <p>votes: {votes}</p>
-            <p>{comment_count}</p>
+            <p><span role='img' aria-label='speech bubble'>💬 </span>{comment_count}</p>
             <p>Created: {new Date(created_at).toDateString()}</p>
-            <VotingButtons />
         </article>
     )
 }
