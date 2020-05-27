@@ -26,11 +26,11 @@ class User extends React.Component {
         if (isLoading) return <p>LOADING...</p>
 
         return (
-            <user>
+            <React.Fragment>
                 <h2>{username}</h2>
                 <img src={avatar_url} alt={`${username} avatar`}/>
                 <ArticleList author={username} />
-            </user>
+            </React.Fragment>
         )
     }
 }
