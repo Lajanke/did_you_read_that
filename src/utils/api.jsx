@@ -1,12 +1,15 @@
 import axios from 'axios'
 const baseURL = 'https://lk-news.herokuapp.com/api'
 
-export const fetchArticles = ({ slug, author }) => {
+export const fetchArticles = ({ slug, author}, sort_by, order) => {
     return axios.get(`${baseURL}/articles`, {
+        
         params: { topic: slug,
                     author,
+                    sort_by,
+                    order,
         },
-
+        
     })
         .then(({ data: { articles } }) => {
             return articles;

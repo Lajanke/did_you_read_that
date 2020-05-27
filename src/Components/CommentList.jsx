@@ -38,7 +38,7 @@ class CommentList extends React.Component {
                 <CommentAdder article_id={this.props.article_id} user={this.props.user} addCommentToList={this.addCommentToList}/>
                 <ul>
                     {commentList.map((comment) => {
-                        return <li key={comment.comment_id}><CommentCard {...comment} user={this.props.user} getComments={this.getComments}/></li>
+                        return <li key={comment.comment_id}><CommentCard {...comment} user={this.props.user} /></li>
                     })}
                 </ul>
             </div>

@@ -8,7 +8,6 @@ class CommentCard extends React.Component {
         deleted: false,
     }
 
-    
     handleDeleteComment = () => {
         this.deleteComment()
     }

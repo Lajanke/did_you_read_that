@@ -17,14 +17,12 @@ class CommentAdder extends React.Component {
     }
 
     handleSubmitForm = (event) => {
-        //const { article_id, user } = this.props;
-       // const { body } = this.state;
         event.preventDefault();
         api.postNewComment(this.state)
             .then((comment) => {
                 this.props.addCommentToList(comment)
             })
-            this.setState({body: ''})    
+        this.setState({ body: '' })
     }
 
     handleCommentClick = () => {
@@ -37,12 +35,15 @@ class CommentAdder extends React.Component {
         return (
             <React.Fragment>
                 {!commentFormOpen &&
-                    <button onClick={this.handleCommentClick}>🗩 Comment</button>
+                    <React.Fragment>
+                    <span role='img' aria-label='speech bubble'>💬 </span>
+                    <button onClick={this.handleCommentClick}>Comment</button>
+                    </React.Fragment>
                 }
                 {commentFormOpen &&
                     <form onSubmit={this.handleSubmitForm}>
                         <label htmlFor="body"></label>
-                        <input onChange={this.handleInputChange} type='text' body="body" value={this.state.body} />
+                        <input onChange={this.handleInputChange} type='text' body="body" value={this.state.body} placeholder='What are your thoughts?' />
                         <button>POST</button>
                     </form>
                 }
