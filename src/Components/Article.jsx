@@ -3,6 +3,7 @@ import * as api from '../utils/api';
 import { Link } from '@reach/router';
 import CommentList from './CommentList';
 import VotingButtons from './VotingButtons';
+import Loader from './Loader';
 
 class Article extends React.Component {
     state = {
@@ -25,12 +26,11 @@ class Article extends React.Component {
     render() {
         const { isLoading } = this.state
         const { title, topic, votes, author, body, created_at, comment_count, article_id } = this.state.article
-        if (isLoading) return <p>LOADING...</p>
+        if (isLoading) return <Loader />
 
         return (
             <article>
                 <h2>{title}</h2>
-
                 <Link to={`/articles/${topic}`}>{topic}</Link>
                 <p><Link to={`/users/${author}`}>✎{author}</Link></p>
                 <p>{body}</p>

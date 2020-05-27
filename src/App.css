@@ -1,18 +1,60 @@
 .App {
-  text-align: center;  
+  text-align: center; 
+}
+
+* {
+  font-weight: 300;
+  color: #d2e4f1;
 }
 
 #root {
   max-width: 500px;
   margin: auto;
-  background-color: aliceblue;
+  background-color: #0e1530;
+  color: #d2e4f1;
 }
 
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1rem;
+  
+}
+
+h1 {
+  background-color: #d2e4f1;
+  padding: 0.2rem 4rem 0.2rem 4rem;
+  color: #0e1530;
+}
+
+nav {
+  padding: 1.5rem;
+}
+
+button {
+  color: #0e1530;
+  background-color: #d2e4f1;
+  border: none;
+  padding: 0.2rem;
+}
+
+select {
+  color: #0e1530;
+  background-color: #d2e4f1;
+  border: none;
+  padding: 0.2rem;
+}
+
+option {
+  color: #0e1530;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  max-width: calc(100% - 1rem);
 }
 
 ul {
@@ -23,18 +65,18 @@ ul {
 
 a {
   text-decoration: none;
-  color: black;
+  color: #d2e4f1;
 }
 
 img {
   max-width: 100px;
+  max-height: 100px;
 }
 
 article {
-  border-style: solid;
+  border-style: dotted;
   border-width: 1px 0 0 0;
   margin: auto;
-  padding: 1rem;
 }
 
 .topic {
@@ -54,4 +96,20 @@ article {
 
 .notClicked {
   background-color: aliceblue;
+}
+
+.loader {
+  border-left: 12px solid tomato;
+  border-bottom: 12px solid tomato;
+  border-top: 12px solid darkolivegreen;
+  border-right: 12px solid darkolivegreen;
+  width: 75px;
+  height: 75px;
+  animation: spin 5s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-//import VotingButtons from './VotingButtons';
 
 const ArticleCard = ({ title, votes, topic, author, created_at, comment_count }) => {
     return (

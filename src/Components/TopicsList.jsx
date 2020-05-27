@@ -2,6 +2,7 @@ import React from 'react';
 import TopicCard from './TopicCard';
 import * as api from '../utils/api';
 import { Link } from '@reach/router';
+import Loader from './Loader';
 
 class TopicList extends React.Component {
     state = {
@@ -16,13 +17,13 @@ class TopicList extends React.Component {
     getTopics = () => {
         api.fetchTopics()
             .then(topics => {
-                this.setState({ topicList: topics, isLoading: false,})
+                this.setState({ topicList: topics, isLoading: false, })
             })
     }
 
     render() {
         const { topicList, isLoading } = this.state
-        if (isLoading) return <p>LOADING...</p>
+        if (isLoading) return <Loader />
         return (
             <ul>
                 {topicList.map((topic) => {

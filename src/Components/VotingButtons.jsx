@@ -86,7 +86,6 @@ class VotingButtons extends React.Component {
                     })
                 })
         }
-
     }
 
     render() {

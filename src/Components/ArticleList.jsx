@@ -1,8 +1,9 @@
 import React from 'react';
-import ArticleCard from './ArticleCard';
 import * as api from '../utils/api';
 import { Link } from '@reach/router';
+import ArticleCard from './ArticleCard';
 import SortingForm from './SortingForm';
+import Loader from './Loader';
 
 class ArticleList extends React.Component {
     state = {
@@ -29,10 +30,12 @@ class ArticleList extends React.Component {
 
     render() {
         const { articleList, isLoading } = this.state
-        if (isLoading) return <p>LOADING...</p>
+        if (isLoading) return <Loader />
 
         return (
             <React.Fragment>
+                <div className='test'></div>
+            <h2>{this.props.slug ? `${this.props.slug}` : 'Articles'}</h2>
             <SortingForm getArticles={this.getArticles}/>
             <ul>
                 {articleList.map((article) => {

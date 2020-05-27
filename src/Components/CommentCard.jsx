@@ -1,7 +1,7 @@
 import React from 'react';
+import * as api from '../utils/api';
 import { Link } from '@reach/router';
 import VotingButtons from './VotingButtons';
-import * as api from '../utils/api'
 
 class CommentCard extends React.Component {
     state = {
@@ -19,6 +19,7 @@ class CommentCard extends React.Component {
             this.setState({deleted: true})
         })
     }
+    
     render() {
         const { author, body, votes, created_at, user, comment_id} = this.props
         if (this.state.deleted) return <p>Comment deleted</p>

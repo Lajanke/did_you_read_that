@@ -1,7 +1,8 @@
 import React from 'react';
-import CommentCard from './CommentCard';
 import * as api from '../utils/api';
+import CommentCard from './CommentCard';
 import CommentAdder from './CommentAdder';
+import Loader from './Loader';
 
 class CommentList extends React.Component {
     state = {
@@ -30,7 +31,7 @@ class CommentList extends React.Component {
 
     render() {
         const { commentList, isLoading } = this.state
-        if (isLoading) return <p>LOADING...</p>
+        if (isLoading) return <Loader />
 
         return (
             <div>

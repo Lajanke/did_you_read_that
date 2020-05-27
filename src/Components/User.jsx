@@ -1,6 +1,7 @@
 import React from 'react';
 import * as api from '../utils/api';
 import ArticleList from './ArticleList';
+import Loader from './Loader';
 
 class User extends React.Component {
     state = {
@@ -23,12 +24,12 @@ class User extends React.Component {
     render() {
         const { isLoading } = this.state
         const { username, avatar_url } = this.state.user
-        if (isLoading) return <p>LOADING...</p>
+        if (isLoading) return <Loader />
 
         return (
             <React.Fragment>
                 <h2>{username}</h2>
-                <img src={avatar_url} alt={`${username} avatar`}/>
+                <img src={avatar_url} alt={`${username} avatar`} />
                 <ArticleList author={username} />
             </React.Fragment>
         )

@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header user={this.state.user}/>
+        <Header user={this.state.user} />
         <Router>
           <ArticleList path='/' />
           <ArticleList path='/articles' />
