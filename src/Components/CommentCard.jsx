@@ -28,6 +28,7 @@ class CommentCard extends React.Component {
     render() {
         const { author, body, votes, created_at, user, comment_id } = this.props
         const { err } = this.state;
+        const { noInteraction } = this.props
         if (this.state.deleted) return <p>Comment deleted</p>
         if (err) return <ErrorDisplayer msg={ err } />
 
@@ -36,7 +37,9 @@ class CommentCard extends React.Component {
                 <p><Link to={`/users/${author}`}>✎{author}</Link></p>
                 <p>{body}</p>
                 <p>Created: {new Date(created_at).toDateString()}</p>
+                {!noInteraction &&
                 <VotingButtons votes={votes} type='comments' id={comment_id} />
+                }
                 {user === author &&
                     <button onClick={this.handleDeleteComment}>DELETE</button>
                 }

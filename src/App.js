@@ -9,10 +9,11 @@ import User from './Components/User';
 import ArticleAdder from './Components/ArticleAdder';
 import ArticleAdderForm from './Components/ArticleAdderForm';
 import ErrorDisplayer from './Components/ErrorDisplayer';
+import FeaturedArticle from './Components/FeaturedArticle';
 
 class App extends React.Component {
   state = {
-    user: 'jessjelly'
+    user: 'weegembump'
   }
 
   render() {
@@ -22,7 +23,7 @@ class App extends React.Component {
         <Header user={this.state.user} />
         <ArticleAdder />
         <Router>
-          <ArticleList path='/' />
+          <FeaturedArticle user={user} path='/' />
           <ArticleList path='/articles' />
           <ArticleList path='/articles/:slug' />
           <TopicsList path='/topics' />

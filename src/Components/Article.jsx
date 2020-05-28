@@ -38,11 +38,15 @@ class Article extends React.Component {
             .then(() => {
                 this.setState({ deleted: true })
             })
+            .catch(err => {
+                this.setState({err: err.response.data.msg, isLoading: false})
+            })
     }
 
     render() {
         const { isLoading, err } = this.state
         const { title, topic, votes, author, body, created_at, comment_count, article_id } = this.state.article
+        const { p, limit, noInteraction } = this.props
         if (isLoading) return <Loader />
         if (this.state.deleted) return <p>Article deleted</p>
         if (err) return <ErrorDisplayer msg={err} />
@@ -54,12 +58,14 @@ class Article extends React.Component {
                 <p><Link to={`/users/${author}`}>✎{author}</Link></p>
                 <p>{body}</p>
                 <p>created at: {new Date(created_at).toDateString()}</p>
+                {!noInteraction &&
                 <VotingButtons votes={votes} id={article_id} type={'articles'} />
+                }
                 {this.props.user === author &&
                     <button onClick={this.handleDeleteArticle}>DELETE</button>
                 }
                 <p><span role='img' aria-label='speech bubble'>💬 </span>{comment_count}</p>
-                <CommentList article_id={article_id} user={this.props.user} />
+                <CommentList article_id={article_id} user={this.props.user} p={p} limit={limit} noInteraction={noInteraction}/>
             </article>
         )
     }
