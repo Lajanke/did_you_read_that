@@ -8,6 +8,7 @@ class CommentAdder extends React.Component {
         article_id: this.props.article_id,
         user: this.props.user,
         commentFormOpen: false,
+        formInvalid: false,
         err: '',
     }
 
@@ -20,24 +21,31 @@ class CommentAdder extends React.Component {
 
     handleSubmitForm = (event) => {
         event.preventDefault();
-        api.postNewComment(this.state)
+        const { body } = this.state;
+      
+        if (body.match(/^\s*$/)) {  
+            this.setState({formInvalid: true})
+        } else {
+            api.postNewComment(this.state)
             .then((comment) => {
                 this.props.addCommentToList(comment)
             })
             .catch(err => {
-                this.setState({err: err.response.data.msg, isLoading: false})
+                this.setState({ err: err.response.data.msg, commentFormOpen: false, formInvalid: false})
             })
-        this.setState({ body: '' })
+        this.setState({ body: '', commentFormOpen: false, formInvalid: false})
+        }
     }
 
+  
     handleCommentClick = () => {
         const { commentFormOpen } = this.state;
         this.setState({ commentFormOpen: !commentFormOpen })
     }
 
     render() {
-        const { commentFormOpen, err } = this.state;
-        if (err) return <ErrorDisplayer msg={ err } />
+        const { commentFormOpen, err, formInvalid } = this.state;
+        if (err) return <ErrorDisplayer msg={err} />
         return (
             <React.Fragment>
                 {!commentFormOpen &&
@@ -49,10 +57,15 @@ class CommentAdder extends React.Component {
                 {commentFormOpen &&
                     <form onSubmit={this.handleSubmitForm}>
                         <label htmlFor="body"></label>
-                        <input onChange={this.handleInputChange} type='text' body="body" value={this.state.body} placeholder='What are your thoughts?' />
+                        <input onChange={this.handleInputChange} type='text' body="body" value={this.state.body} required='required' placeholder='What are your thoughts?' />
                         <button>POST</button>
+                        
                     </form>
+
                 }
+                {(formInvalid && commentFormOpen) &&
+                            <p>Comment cannot be only spaces!</p>
+                        }
             </React.Fragment>
         )
     }
