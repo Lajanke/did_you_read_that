@@ -12,8 +12,8 @@ export const fetchArticles = ({ slug, author }, sort_by, order) => {
         },
 
     })
-        .then(({ data: { articles } }) => {
-            return articles;
+        .then(({ data }) => {
+            return data;
         })
 }
 

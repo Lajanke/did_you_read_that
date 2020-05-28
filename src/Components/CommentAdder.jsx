@@ -1,5 +1,6 @@
 import React from 'react';
 import * as api from '../utils/api';
+import ErrorDisplayer from './ErrorDisplayer';
 
 class CommentAdder extends React.Component {
     state = {
@@ -7,6 +8,7 @@ class CommentAdder extends React.Component {
         article_id: this.props.article_id,
         user: this.props.user,
         commentFormOpen: false,
+        err: '',
     }
 
     handleInputChange = (event) => {
@@ -22,6 +24,9 @@ class CommentAdder extends React.Component {
             .then((comment) => {
                 this.props.addCommentToList(comment)
             })
+            .catch(err => {
+                this.setState({err: err.response.data.msg, isLoading: false})
+            })
         this.setState({ body: '' })
     }
 
@@ -31,7 +36,8 @@ class CommentAdder extends React.Component {
     }
 
     render() {
-        const { commentFormOpen } = this.state;
+        const { commentFormOpen, err } = this.state;
+        if (err) return <ErrorDisplayer msg={ err } />
         return (
             <React.Fragment>
                 {!commentFormOpen &&

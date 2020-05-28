@@ -1,6 +1,7 @@
 import React from 'react';
 import * as api from '../utils/api';
 import { Link } from '@reach/router';
+import ErrorDisplayer from './ErrorDisplayer';
 
 class ArticleAdderForm extends React.Component {
     state = {
@@ -9,6 +10,7 @@ class ArticleAdderForm extends React.Component {
         body: '',
         submitted: false,
         artticle_id: 0,
+        err: '',
     }
 
     handleInputChange = (event) => {
@@ -28,9 +30,14 @@ class ArticleAdderForm extends React.Component {
             .then((article) => {
                 this.setState({ title: '', topic: 'coding', body: '', submitted: true, article_id: article.article_id })
             })
+            .catch(err => {
+                this.setState({err: err.response.data.msg, isLoading: false})
+            })
     }
 
     render() {
+        const { err } = this.state;
+        if (err) return <ErrorDisplayer msg={ err }/>
         const { submitted, article_id } = this.state
         return (
             <form onSubmit={this.handleSubmitForm} className='articleForm'>

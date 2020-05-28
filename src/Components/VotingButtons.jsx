@@ -1,19 +1,21 @@
 import React from 'react';
 import * as api from '../utils/api';
-//const { upVoteCalculator, downVoteCalculator } = require('../utils/utils')
+import ErrorDisplayer from './ErrorDisplayer';
+const { upVoteCalculator, downVoteCalculator } = require('../utils/utils')
 
 class VotingButtons extends React.Component {
     state = {
         votesCast: 0,
         upvoteClicked: false,
         downvoteClicked: false,
+        err: '',
     }
 
-    /* handleUpVote = (event) => {
+    handleUpVote = (event) => {
          const { id, type } = this.props
          const { upvoteClicked, downvoteClicked } = this.state
          const num = upVoteCalculator(upvoteClicked, downvoteClicked)
-         api.patchCommentVotes(num, id, type)
+         api.patchVotes(num, id, type)
              .then(() => {
                  if (num === 2) {
                      this.setState((currentState) => {
@@ -37,16 +39,21 @@ class VotingButtons extends React.Component {
                              upvoteClicked: !upvoteClicked,
                          }
                      })
+                     
                  }
              })
+             .catch(err => {
+                this.setState({err: err.response.data.msg, isLoading: false})
+            })
      }
  
      handleDownVote = (event) => {
          const { id, type } = this.props
          const { downvoteClicked, upvoteClicked } = this.state
          const num = downVoteCalculator(upvoteClicked, downvoteClicked)
-         api.patchCommentVotes(num, id, type)
+         api.patchVotes(num, id, type)
              .then(() => {
+                console.log(num, downvoteClicked, upvoteClicked);
                  if (num === -2) {
                      this.setState((currentState) => {
                          return {
@@ -68,94 +75,19 @@ class VotingButtons extends React.Component {
                              votesCast: currentState.votesCast + 1,
                              downvoteClicked: !downvoteClicked,
                          }
-                     })
+                     }) 
                  }
              })
-     }*/
-
-    handleUpVote = (event) => {
-        const { id, type } = this.props
-        const { upvoteClicked, downvoteClicked } = this.state
-        if (!upvoteClicked && downvoteClicked) {
-            const num = 2
-            api.patchVotes(num, id, type)
-                .then(() => {
-                    this.setState((currentState) => {
-                        return {
-                            votesCast: currentState.votesCast + 2,
-                            upvoteClicked: !upvoteClicked,
-                            downvoteClicked: !downvoteClicked,
-                        }
-                    })
-                })
-        } else if (!upvoteClicked && !downvoteClicked) {
-            const num = 1
-            api.patchVotes(num, id, type)
-                .then(() => {
-                    this.setState((currentState) => {
-                        return {
-                            votesCast: currentState.votesCast + 1,
-                            upvoteClicked: !upvoteClicked,
-                        }
-                    })
-                })
-        } else {
-            const num = -1
-            api.patchVotes(num, id, type)
-                .then(() => {
-                    this.setState((currentState) => {
-                        return {
-                            votesCast: currentState.votesCast - 1,
-                            upvoteClicked: !upvoteClicked,
-                        }
-                    })
-                })
-        }
-    }
-
-    handleDownVote = (event) => {
-        const { id, type } = this.props
-        const { downvoteClicked, upvoteClicked } = this.state
-        if (!downvoteClicked && upvoteClicked) {
-            const num = -2
-            api.patchVotes(num, id, type)
-                .then(() => {
-                    this.setState((currentState) => {
-                        return {
-                            votesCast: currentState.votesCast - 2,
-                            downvoteClicked: !downvoteClicked,
-                            upvoteClicked: !upvoteClicked,
-                        }
-                    })
-                })
-        } else if (!downvoteClicked && !upvoteClicked) {
-            const num = -1
-            api.patchVotes(num, id, type)
-                .then(() => {
-                    this.setState((currentState) => {
-                        return {
-                            votesCast: currentState.votesCast - 1,
-                            downvoteClicked: !downvoteClicked,
-                        }
-                    })
-                })
-        } else {
-            const num = 1
-            api.patchVotes(num, id, type)
-                .then(() => {
-                    this.setState((currentState) => {
-                        return {
-                            votesCast: currentState.votesCast + 1,
-                            downvoteClicked: !downvoteClicked,
-                        }
-                    })
-                })
-        }
-    }
+             .catch(err => {
+                this.setState({err: err.response.data.msg, isLoading: false})
+            })
+     }
 
     render() {
         const { votes } = this.props
-        const { votesCast, downvoteClicked, upvoteClicked } = this.state
+        const { votesCast, downvoteClicked, upvoteClicked, err } = this.state
+        if (err) return <ErrorDisplayer msg={ err } />
+
         return (
             <div>
                 <p>{votes + votesCast}</p>

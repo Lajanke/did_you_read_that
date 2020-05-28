@@ -4,12 +4,14 @@ import { Link } from '@reach/router';
 import CommentList from './CommentList';
 import VotingButtons from './VotingButtons';
 import Loader from './Loader';
+import ErrorDisplayer from './ErrorDisplayer';
 
 class Article extends React.Component {
     state = {
         article: {},
         isLoading: true,
         deleted: false,
+        err: '',
     }
 
     componentDidMount() {
@@ -21,6 +23,9 @@ class Article extends React.Component {
         api.fetchArticleById(article_id)
             .then(article => {
                 this.setState({ article: article, isLoading: false })
+            })
+            .catch(err => {
+                this.setState({err: err.response.data.msg, isLoading: false})
             })
     }
 
@@ -37,10 +42,11 @@ class Article extends React.Component {
     }
 
     render() {
-        const { isLoading } = this.state
+        const { isLoading, err } = this.state
         const { title, topic, votes, author, body, created_at, comment_count, article_id } = this.state.article
         if (isLoading) return <Loader />
         if (this.state.deleted) return <p>Article deleted</p>
+        if (err) return <ErrorDisplayer msg={err} />
 
         return (
             <article>

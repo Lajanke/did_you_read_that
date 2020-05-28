@@ -8,6 +8,7 @@ import Article from './Components/Article';
 import User from './Components/User';
 import ArticleAdder from './Components/ArticleAdder';
 import ArticleAdderForm from './Components/ArticleAdderForm';
+import ErrorDisplayer from './Components/ErrorDisplayer';
 
 class App extends React.Component {
   state = {
@@ -15,6 +16,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { user } = this.state
     return (
       <div>
         <Header user={this.state.user} />
@@ -24,9 +26,10 @@ class App extends React.Component {
           <ArticleList path='/articles' />
           <ArticleList path='/articles/:slug' />
           <TopicsList path='/topics' />
-          <Article user={this.state.user} path='/article/:article_id' />
-          <ArticleAdderForm user={this.state.user} path='/article_submission' />
+          <Article user={user} path='/article/:article_id' />
+          <ArticleAdderForm user={user} path='/article_submission' />
           <User path='/users/:username' />
+          <ErrorDisplayer default />
         </Router>
       </div>
     )

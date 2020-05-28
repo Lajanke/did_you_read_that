@@ -2,10 +2,12 @@ import React from 'react';
 import * as api from '../utils/api';
 import { Link } from '@reach/router';
 import VotingButtons from './VotingButtons';
+import ErrorDisplayer from './ErrorDisplayer';
 
 class CommentCard extends React.Component {
     state = {
         deleted: false,
+        err: '',
     }
 
     handleDeleteComment = () => {
@@ -18,11 +20,16 @@ class CommentCard extends React.Component {
             .then(() => {
                 this.setState({ deleted: true })
             })
+            .catch(err => {
+                this.setState({err: err.response.data.msg, isLoading: false})
+            })
     }
 
     render() {
         const { author, body, votes, created_at, user, comment_id } = this.props
+        const { err } = this.state;
         if (this.state.deleted) return <p>Comment deleted</p>
+        if (err) return <ErrorDisplayer msg={ err } />
 
         return (
             <article>

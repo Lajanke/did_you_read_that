@@ -11,7 +11,7 @@ const upVoteCalculator = (upvoteClicked, downvoteClicked) => {
     }
 }
 
-const downVoteCalculator = (downvoteClicked, upvoteClicked) => {
+const downVoteCalculator = (upvoteClicked, downvoteClicked,) => {
     if (!downvoteClicked && upvoteClicked) {
         return -2
     } else if (!downvoteClicked && !upvoteClicked) {
