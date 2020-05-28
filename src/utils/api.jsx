@@ -1,15 +1,16 @@
 import axios from 'axios'
 const baseURL = 'https://lk-news.herokuapp.com/api'
 
-export const fetchArticles = ({ slug, author}, sort_by, order) => {
+export const fetchArticles = ({ slug, author }, sort_by, order) => {
     return axios.get(`${baseURL}/articles`, {
-        
-        params: { topic: slug,
-                    author,
-                    sort_by,
-                    order,
+
+        params: {
+            topic: slug,
+            author,
+            sort_by,
+            order,
         },
-        
+
     })
         .then(({ data: { articles } }) => {
             return articles;
@@ -23,7 +24,7 @@ export const fetchArticleById = (article_id) => {
         })
 }
 
-export const fetchComments = ({article_id}) => {
+export const fetchComments = ({ article_id }) => {
     return axios.get(`${baseURL}/articles/${article_id}/comments`)
         .then(({ data: { comments } }) => {
             return comments;
@@ -44,13 +45,15 @@ export const fetchUserByUsername = (username) => {
         })
 }
 
-export const postNewComment = ({article_id, body, user}) => {
-    const submittedComment = {'username': user, 'body': body}
+export const postNewComment = ({ article_id, body, user }) => {
+    const submittedComment = { 'username': user, 'body': body }
     return axios.post(`${baseURL}/articles/${article_id}/comments`, submittedComment)
-    .then(({data:{comment}}) => {
-        return comment;
-    })
+        .then(({ data: { comment } }) => {
+            return comment;
+        })
 }
+
+//refactor deletes to use same function like patchVotes
 
 export const deleteCommentById = (comment_id) => {
     return axios.delete(`${baseURL}/comments/${comment_id}`)
@@ -59,8 +62,22 @@ export const deleteCommentById = (comment_id) => {
         })
 }
 
-export const patchCommentVotes = (num, id, type) => {
+export const deleteArticleById = (article_id) => {
+    return axios.delete(`${baseURL}/articles/${article_id}`)
+        .then(({ data: { msg } }) => {
+            return msg;
+        })
+}
+
+export const patchVotes = (num, id, type) => {
     return axios.patch(`${baseURL}/${type}/${id}`, { inc_votes: num })
 }
 
-//${baseURL}/type/${id}
+export const postNewArticle = (title, topic, body, user) => {
+    const submittedComment = { 'author': user, 'body': body, 'topic': topic, 'title': title }
+    console.log(submittedComment)
+    return axios.post(`${baseURL}/articles/`, submittedComment)
+        .then(({ data: { article } }) => {
+            return article;
+        })
+}

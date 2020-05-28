@@ -34,7 +34,6 @@ class ArticleList extends React.Component {
 
         return (
             <React.Fragment>
-                <div className='test'></div>
             <h2>{this.props.slug ? `${this.props.slug}` : 'Articles'}</h2>
             <SortingForm getArticles={this.getArticles}/>
             <ul>

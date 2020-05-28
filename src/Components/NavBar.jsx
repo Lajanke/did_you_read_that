@@ -20,7 +20,7 @@ class NavBar extends React.Component {
         }
 
         {navOpen &&
-          <div>
+          <div className='navDrawer'>
             <button onClick={this.handleNavClick}>X</button>
             <ul>
               <Link to='/' onClick={this.handleNavClick}>
