@@ -9,8 +9,9 @@ class ArticleAdderForm extends React.Component {
         topic: 'coding',
         body: '',
         submitted: false,
-        artticle_id: 0,
+        article_id: 0,
         err: '',
+        formInvalid: false,
     }
 
     handleInputChange = (event) => {
@@ -22,23 +23,26 @@ class ArticleAdderForm extends React.Component {
     }
 
     handleSubmitForm = (event) => {
+        event.preventDefault()
         const { title, topic, body } = this.state
         const { user } = this.props
-        console.log(title, user, body, topic)
-        event.preventDefault()
-        api.postNewArticle(title, topic, body, user)
+
+        if (body.match(/^\s*$/) || title.match(/^\s*$/)) {  
+            this.setState({formInvalid: true})
+        } else { 
+            api.postNewArticle(title, topic, body, user)
             .then((article) => {
-                this.setState({ title: '', topic: 'coding', body: '', submitted: true, article_id: article.article_id })
+                this.setState({ title: '', topic: 'coding', body: '', submitted: true, article_id: article.article_id, formInvalid: false })
             })
             .catch(err => {
                 this.setState({err: err.response.data.msg, isLoading: false})
-            })
+            })}
     }
 
     render() {
         const { err } = this.state;
         if (err) return <ErrorDisplayer msg={ err }/>
-        const { submitted, article_id } = this.state
+        const { submitted, article_id, formInvalid } = this.state
         return (
             <form onSubmit={this.handleSubmitForm} className='articleForm'>
                 <label>Title:
@@ -57,6 +61,9 @@ class ArticleAdderForm extends React.Component {
                 <button>POST</button>
                 {submitted &&
                     <p>Article submitted. See it <Link to={`/article/${article_id}`}>HERE</Link></p>
+                }
+                {formInvalid &&
+                    <p>Inputs cannot be only spaces!</p>
                 }
             </form>
         )
