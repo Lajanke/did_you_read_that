@@ -24,14 +24,14 @@ class ArticleList extends React.Component {
         }
     }
 
-    getArticles = (sort_by, order) => {   
-        api.fetchArticles(this.props, sort_by, order)
-            .then(({articles, total_count}) => {
-                this.setState({ articleList: articles, total_count, isLoading: false })
-            })
-            .catch(err => {
+    getArticles = async (sort_by, order) => {   
+            try {
+            const {articles, total_count} = await api.fetchArticles(this.props, sort_by, order)
+           
+            this.setState({ articleList: articles, total_count, isLoading: false })
+            } catch(err) {
                 this.setState({err: err.response.data.msg, isLoading: false})
-            })
+            }
     }
 
     render() {

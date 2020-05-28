@@ -16,14 +16,13 @@ class TopicList extends React.Component {
         this.getTopics()
     }
 
-    getTopics = () => {
-        api.fetchTopics()
-            .then(topics => {
+    getTopics = async () => {
+            try {
+                const topics = await api.fetchTopics()
                 this.setState({ topicList: topics, isLoading: false, })
-            })
-            .catch(err => {
+            } catch(err) {
                 this.setState({err: err.response.data.msg, isLoading: false})
-            })
+            }
     }
 
     render() {

@@ -18,15 +18,14 @@ class Article extends React.Component {
         this.getArticleById()
     }
 
-    getArticleById = () => {
+    getArticleById = async () => {
         const { article_id } = this.props;
-        api.fetchArticleById(article_id)
-            .then(article => {
-                this.setState({ article: article, isLoading: false })
-            })
-            .catch(err => {
-                this.setState({err: err.response.data.msg, isLoading: false})
-            })
+        try {
+            const article = await api.fetchArticleById(article_id)
+            this.setState({ article: article, isLoading: false })
+        } catch(err) {
+            this.setState({err: err.response.data.msg, isLoading: false})
+        }
     }
 
     handleDeleteArticle = () => {

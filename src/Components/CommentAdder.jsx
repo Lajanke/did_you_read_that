@@ -19,25 +19,23 @@ class CommentAdder extends React.Component {
         })
     }
 
-    handleSubmitForm = (event) => {
+    handleSubmitForm = async (event) => {
         event.preventDefault();
         const { body } = this.state;
-      
-        if (body.match(/^\s*$/)) {  
-            this.setState({formInvalid: true})
+
+        if (body.match(/^\s*$/)) {
+            this.setState({ formInvalid: true })
         } else {
-            api.postNewComment(this.state)
-            .then((comment) => {
+            try {
+                const comment = await api.postNewComment(this.state)
                 this.props.addCommentToList(comment)
-            })
-            .catch(err => {
-                this.setState({ err: err.response.data.msg, commentFormOpen: false, formInvalid: false})
-            })
-        this.setState({ body: '', commentFormOpen: false, formInvalid: false})
+            } catch (err) {
+                this.setState({ err: err.response.data.msg, commentFormOpen: false, formInvalid: false })
+            }
+            this.setState({ body: '', commentFormOpen: false, formInvalid: false })
         }
     }
 
-  
     handleCommentClick = () => {
         const { commentFormOpen } = this.state;
         this.setState({ commentFormOpen: !commentFormOpen })
@@ -59,13 +57,13 @@ class CommentAdder extends React.Component {
                         <label htmlFor="body"></label>
                         <input onChange={this.handleInputChange} type='text' body="body" value={this.state.body} required='required' placeholder='What are your thoughts?' />
                         <button>POST</button>
-                        
+
                     </form>
 
                 }
                 {(formInvalid && commentFormOpen) &&
-                            <p>Comment cannot be only spaces!</p>
-                        }
+                    <p>Comment cannot be only spaces!</p>
+                }
             </React.Fragment>
         )
     }

@@ -16,14 +16,13 @@ class CommentList extends React.Component {
         this.getComments()
     }
 
-    getComments = () => {
-        api.fetchComments(this.props)
-            .then(comments => {
-                this.setState({ commentList: comments, isLoading: false })
-            })
-            .catch(err => {
-                this.setState({err: err.response.data.msg, isLoading: false})
-            })
+    getComments = async () => {
+        try {
+            const comments = await api.fetchComments(this.props)
+            this.setState({ commentList: comments, isLoading: false })
+        } catch(err) {
+            this.setState({err: err.response.data.msg, isLoading: false})
+        }
     }
 
     addCommentToList = (comment) => {

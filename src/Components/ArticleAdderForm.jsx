@@ -16,32 +16,31 @@ class ArticleAdderForm extends React.Component {
 
     handleInputChange = (event) => {
         const { value, name } = event.target
-        console.log(event.target.value)
         this.setState({
             [name]: value,
         })
     }
 
-    handleSubmitForm = (event) => {
+    handleSubmitForm = async (event) => {
         event.preventDefault()
         const { title, topic, body } = this.state
         const { user } = this.props
 
-        if (body.match(/^\s*$/) || title.match(/^\s*$/)) {  
-            this.setState({formInvalid: true})
-        } else { 
-            api.postNewArticle(title, topic, body, user)
-            .then((article) => {
+        if (body.match(/^\s*$/) || title.match(/^\s*$/)) {
+            this.setState({ formInvalid: true })
+        } else {
+            try {
+                const article = await api.postNewArticle(title, topic, body, user)
                 this.setState({ title: '', topic: 'coding', body: '', submitted: true, article_id: article.article_id, formInvalid: false })
-            })
-            .catch(err => {
-                this.setState({err: err.response.data.msg, isLoading: false})
-            })}
+            } catch (err) {
+                this.setState({ err: err.response.data.msg, isLoading: false })
+            }
+        }
     }
 
     render() {
         const { err } = this.state;
-        if (err) return <ErrorDisplayer msg={ err }/>
+        if (err) return <ErrorDisplayer msg={err} />
         const { submitted, article_id, formInvalid } = this.state
         return (
             <form onSubmit={this.handleSubmitForm} className='articleForm'>

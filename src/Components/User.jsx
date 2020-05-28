@@ -15,15 +15,14 @@ class User extends React.Component {
         this.getUserByUsername()
     }
 
-    getUserByUsername = () => {
+    getUserByUsername = async () => {
         const { username } = this.props;
-        api.fetchUserByUsername(username)
-            .then(user => {
+            try {
+                const user = await api.fetchUserByUsername(username)
                 this.setState({ user: user, isLoading: false })
-            })
-            .catch(err => {
+            } catch(err) {
                 this.setState({err: err.response.data.msg, isLoading: false})
-            })
+            }
     }
 
     render() {
