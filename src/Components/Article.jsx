@@ -34,7 +34,7 @@ class Article extends React.Component {
 
     deleteArticle = () => {
         const { article_id } = this.props
-        api.deleteArticleById(article_id)
+        api.deleteById(article_id, 'articles')
             .then(() => {
                 this.setState({ deleted: true })
             })

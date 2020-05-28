@@ -41,22 +41,12 @@ export const postNewComment = async ({ article_id, body, user }) => {
     return comment
 }
 
-//refactor deletes to use same function like patchVotes
-
-export const deleteCommentById = (comment_id) => {
-    return axios.delete(`${baseURL}/comments/${comment_id}`)
+export const deleteById = (id, type) => {
+    return axios.delete(`${baseURL}/${type}/${id}`)
         .then(({ data: { msg } }) => {
             return msg;
         })
 }
-
-export const deleteArticleById = (article_id) => {
-    return axios.delete(`${baseURL}/articles/${article_id}`)
-        .then(({ data: { msg } }) => {
-            return msg;
-        })
-}
-//refactor deletes to use same function like patchVotes
 
 export const patchVotes = async (num, id, type) => {
     const data = await request.patch(`/${type}/${id}`, { inc_votes: num })

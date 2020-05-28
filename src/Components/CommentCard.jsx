@@ -16,7 +16,7 @@ class CommentCard extends React.Component {
 
     deleteComment = () => {
         const { comment_id } = this.props
-        api.deleteCommentById(comment_id)
+        api.deleteById(comment_id, 'comments')
             .then(() => {
                 this.setState({ deleted: true })
             })
