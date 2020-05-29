@@ -5,8 +5,6 @@ import ErrorDisplayer from './ErrorDisplayer';
 class CommentAdder extends React.Component {
     state = {
         body: '',
-        article_id: this.props.article_id,
-        user: this.props.user,
         commentFormOpen: false,
         formInvalid: false,
         err: '',
@@ -22,12 +20,13 @@ class CommentAdder extends React.Component {
     handleSubmitForm = async (event) => {
         event.preventDefault();
         const { body } = this.state;
+        const { article_id, user } = this.props
 
         if (body.match(/^\s*$/)) {
             this.setState({ formInvalid: true })
         } else {
             try {
-                const comment = await api.postNewComment(this.state)
+                const comment = await api.postNewComment({...this.state, article_id, user})
                 this.props.addCommentToList(comment)
             } catch (err) {
                 this.setState({ err: err.response.data.msg, commentFormOpen: false, formInvalid: false })

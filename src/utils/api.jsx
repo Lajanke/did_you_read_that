@@ -1,5 +1,4 @@
 import axios from 'axios'
-const baseURL = 'https://lk-news.herokuapp.com/api'
 
 const request = axios.create({ baseURL: 'https://lk-news.herokuapp.com/api' })
 
@@ -42,7 +41,7 @@ export const postNewComment = async ({ article_id, body, user }) => {
 }
 
 export const deleteById = async (id, type) => {
-        const { data: { msg }} = await request.delete(`${baseURL}/${type}/${id}`)
+        const { data: { msg }} = await request.delete(`/${type}/${id}`)
         return msg
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from '@reach/router';
 
-const ArticleAdder = (props) => {
+const ArticleAdder = () => {
     return (
         <Link to='/article_submission' >
-            <p><span role='img' aria-label='plus sign'>➕</span>NEW ARTICLE</p>
+            <p><i className="fas fa-plus"></i> NEW ARTICLE</p>
         </Link>
     )
 }

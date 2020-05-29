@@ -19,8 +19,8 @@ class App extends React.Component {
   render() {
     const { user } = this.state
     return (
-      <div>
-        <Header user={this.state.user} />
+      <main>
+        <Header user={user} />
         <ArticleAdder />
         <Router>
           <FeaturedArticle user={user} path='/' />
@@ -32,7 +32,7 @@ class App extends React.Component {
           <User path='/users/:username' />
           <ErrorDisplayer default />
         </Router>
-      </div>
+      </main>
     )
   }
 }
