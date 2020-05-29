@@ -33,8 +33,8 @@ class User extends React.Component {
 
         return (
             <React.Fragment>
-                <h2>{username}</h2>
-                <img src={avatar_url} alt={`${username} avatar`} />
+                <h1>{username}</h1>
+                <img style={{width: '100px'}} src={avatar_url} alt={`${username} avatar`} />
                 <ArticleList author={username} />
             </React.Fragment>
         )
