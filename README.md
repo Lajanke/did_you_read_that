@@ -9,7 +9,7 @@ The backend API is hosted on Heroku https://lk-news.herokuapp.com/api. See the G
 To run this project locally:
 
 - requires: Node js
-- Clone this repository, git clone https://github.com/Lajanke/did_you_read_that.gitin
+- Clone this repository, git clone https://github.com/Lajanke/did_you_read_that.git
 - npm install, to install dependencies
 - npm start, to start the app
 - Open up localhost:3000 in your browser
