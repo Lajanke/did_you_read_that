@@ -32,13 +32,14 @@ header {
   width: 50vw;
   height: 100vh;
   background-color: #232426;
-  opacity: 98%;
+  opacity: 0.98;
   position: fixed;
   top: 0;
   right: 0;
   animation: slidein 0.3s;
   overflow: scroll;
   z-index: 100;
+  overflow: hidden;
 }
 
 
