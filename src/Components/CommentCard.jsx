@@ -21,7 +21,7 @@ class CommentCard extends React.Component {
                 this.setState({ deleted: true })
             })
             .catch(err => {
-                this.setState({err: err.response.data.msg, isLoading: false})
+                this.setState({ err: err.response.data.msg, isLoading: false })
             })
     }
 
@@ -30,7 +30,7 @@ class CommentCard extends React.Component {
         const { err } = this.state;
         const { noInteraction } = this.props
         if (this.state.deleted) return <p>Comment deleted</p>
-        if (err) return <ErrorDisplayer msg={ err } />
+        if (err) return <ErrorDisplayer msg={err} />
 
         return (
             <article>
@@ -38,7 +38,7 @@ class CommentCard extends React.Component {
                 <p>{body}</p>
                 <p>Created: {new Date(created_at).toDateString()}</p>
                 {!noInteraction &&
-                <VotingButtons votes={votes} type='comments' id={comment_id} />
+                    <VotingButtons votes={votes} type='comments' id={comment_id} />
                 }
                 {user === author &&
                     <button onClick={this.handleDeleteComment}>DELETE</button>

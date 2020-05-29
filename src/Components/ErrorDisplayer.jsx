@@ -4,7 +4,7 @@ const ErrorDisplayer = ({ msg }) => {
     const err = msg ? msg : 'Oh no, that path doesn\'t exist'
     return (
         <div>
-            <p>{ err }</p>
+            <p>{err}</p>
         </div>
     )
 }

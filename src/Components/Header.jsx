@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 
-const Header = (props) => {
+const Header = ({user}) => {
     return (
         <div>
             <header>
@@ -9,7 +9,7 @@ const Header = (props) => {
                 <NavBar />
             </header>
             <p>{new Date().toDateString()}</p>
-            <p>Logged in as: {props.user}</p>
+            <p>Logged in as: {user}</p>
         </div>
     )
 }

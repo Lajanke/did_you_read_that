@@ -17,19 +17,19 @@ class User extends React.Component {
 
     getUserByUsername = async () => {
         const { username } = this.props;
-            try {
-                const user = await api.fetchUserByUsername(username)
-                this.setState({ user: user, isLoading: false })
-            } catch(err) {
-                this.setState({err: err.response.data.msg, isLoading: false})
-            }
+        try {
+            const user = await api.fetchUserByUsername(username)
+            this.setState({ user: user, isLoading: false })
+        } catch (err) {
+            this.setState({ err: err.response.data.msg, isLoading: false })
+        }
     }
 
     render() {
         const { isLoading, err } = this.state
         const { username, avatar_url } = this.state.user
         if (isLoading) return <Loader />
-        if (err) return <ErrorDisplayer msg={ err } />
+        if (err) return <ErrorDisplayer msg={err} />
 
         return (
             <React.Fragment>

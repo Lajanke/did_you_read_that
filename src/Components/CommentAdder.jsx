@@ -42,7 +42,7 @@ class CommentAdder extends React.Component {
     }
 
     render() {
-        const { commentFormOpen, err, formInvalid } = this.state;
+        const { commentFormOpen, err, formInvalid, body } = this.state;
         if (err) return <ErrorDisplayer msg={err} />
         return (
             <React.Fragment>
@@ -55,7 +55,7 @@ class CommentAdder extends React.Component {
                 {commentFormOpen &&
                     <form onSubmit={this.handleSubmitForm}>
                         <label htmlFor="body"></label>
-                        <input onChange={this.handleInputChange} type='text' body="body" value={this.state.body} required='required' placeholder='What are your thoughts?' />
+                        <input onChange={this.handleInputChange} type='text' body="body" value={body} required='required' placeholder='What are your thoughts?' />
                         <button>POST</button>
 
                     </form>

@@ -41,21 +41,21 @@ class ArticleAdderForm extends React.Component {
     render() {
         const { err } = this.state;
         if (err) return <ErrorDisplayer msg={err} />
-        const { submitted, article_id, formInvalid } = this.state
+        const { submitted, article_id, formInvalid, title, topic, body } = this.state
         return (
             <form onSubmit={this.handleSubmitForm} className='articleForm'>
                 <label>Title:
-                    <input type="text" name='title' required='required' onChange={this.handleInputChange} placeholder='Something snappy...' value={this.state.title} />
+                    <input type="text" name='title' required='required' onChange={this.handleInputChange} placeholder='Something snappy...' value={title} />
                 </label>
                 <label>Topic:
-                    <select className='select' name='topic' onChange={this.handleInputChange} value={this.state.topic}>
+                    <select className='select' name='topic' onChange={this.handleInputChange} value={topic}>
                         <option value='coding'>Coding</option>
                         <option value='football'>Football</option>
                         <option value='cooking'>Cooking</option>
                     </select>
                 </label>
                 <label>Article:
-                    <input type="text" name='body' required='required' onChange={this.handleInputChange} placeholder='What do you have to say...' value={this.state.body} />
+                    <input type="text" name='body' required='required' onChange={this.handleInputChange} placeholder='What do you have to say...' value={body} />
                 </label>
                 <button>POST</button>
                 {submitted &&

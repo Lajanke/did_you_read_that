@@ -13,7 +13,7 @@ import FeaturedArticle from './Components/FeaturedArticle';
 
 class App extends React.Component {
   state = {
-    user: 'weegembump'
+    user: 'jessjelly'
   }
 
   render() {

@@ -17,18 +17,18 @@ class TopicList extends React.Component {
     }
 
     getTopics = async () => {
-            try {
-                const topics = await api.fetchTopics()
-                this.setState({ topicList: topics, isLoading: false, })
-            } catch(err) {
-                this.setState({err: err.response.data.msg, isLoading: false})
-            }
+        try {
+            const topics = await api.fetchTopics()
+            this.setState({ topicList: topics, isLoading: false, })
+        } catch (err) {
+            this.setState({ err: err.response.data.msg, isLoading: false })
+        }
     }
 
     render() {
         const { topicList, isLoading, err } = this.state
         if (isLoading) return <Loader />
-        if (err) return <ErrorDisplayer msg={ err } />
+        if (err) return <ErrorDisplayer msg={err} />
         return (
             <ul>
                 {topicList.map((topic) => {

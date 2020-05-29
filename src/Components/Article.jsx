@@ -23,8 +23,8 @@ class Article extends React.Component {
         try {
             const article = await api.fetchArticleById(article_id)
             this.setState({ article: article, isLoading: false })
-        } catch(err) {
-            this.setState({err: err.response.data.msg, isLoading: false})
+        } catch (err) {
+            this.setState({ err: err.response.data.msg, isLoading: false })
         }
     }
 
@@ -39,16 +39,16 @@ class Article extends React.Component {
                 this.setState({ deleted: true })
             })
             .catch(err => {
-                this.setState({err: err.response.data.msg, isLoading: false})
+                this.setState({ err: err.response.data.msg, isLoading: false })
             })
     }
 
     render() {
-        const { isLoading, err } = this.state
+        const { isLoading, err, deleted } = this.state
         const { title, topic, votes, author, body, created_at, comment_count, article_id } = this.state.article
-        const { p, limit, noInteraction } = this.props
+        const { p, limit, noInteraction, user } = this.props
         if (isLoading) return <Loader />
-        if (this.state.deleted) return <p>Article deleted</p>
+        if (deleted) return <p>Article deleted</p>
         if (err) return <ErrorDisplayer msg={err} />
 
         return (
@@ -59,13 +59,13 @@ class Article extends React.Component {
                 <p>{body}</p>
                 <p>created at: {new Date(created_at).toDateString()}</p>
                 {!noInteraction &&
-                <VotingButtons votes={votes} id={article_id} type={'articles'} />
+                    <VotingButtons votes={votes} id={article_id} type={'articles'} />
                 }
-                {this.props.user === author &&
+                {user === author &&
                     <button onClick={this.handleDeleteArticle}>DELETE</button>
                 }
                 <p><span role='img' aria-label='speech bubble'>💬 </span>{comment_count}</p>
-                <CommentList article_id={article_id} user={this.props.user} p={p} limit={limit} noInteraction={noInteraction}/>
+                <CommentList article_id={article_id} user={user} p={p} limit={limit} noInteraction={noInteraction} />
             </article>
         )
     }

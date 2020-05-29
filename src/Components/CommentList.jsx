@@ -16,12 +16,12 @@ class CommentList extends React.Component {
         this.getComments()
     }
 
-    getComments = async (p, limit) => {
+    getComments = async () => {
         try {
             const comments = await api.fetchComments(this.props)
             this.setState({ commentList: comments, isLoading: false })
-        } catch(err) {
-            this.setState({err: err.response.data.msg, isLoading: false})
+        } catch (err) {
+            this.setState({ err: err.response.data.msg, isLoading: false })
         }
     }
 
@@ -35,18 +35,18 @@ class CommentList extends React.Component {
 
     render() {
         const { commentList, isLoading, err } = this.state
-        const { noInteraction, user } = this.props
+        const { noInteraction, user, article_id } = this.props
         if (isLoading) return <Loader />
-        if (err) return <ErrorDisplayer msg={ err } />
+        if (err) return <ErrorDisplayer msg={err} />
         return (
             <div>
                 <h3>comments</h3>
                 {!noInteraction &&
-                <CommentAdder path='/article/:article_id' article_id={this.props.article_id} user={this.props.user} addCommentToList={this.addCommentToList}/>
+                    <CommentAdder path='/article/:article_id' article_id={article_id} user={user} addCommentToList={this.addCommentToList} />
                 }
                 <ul>
                     {commentList.map((comment) => {
-                        return <li key={comment.comment_id}><CommentCard {...comment} user={user} noInteraction={noInteraction}/></li>
+                        return <li key={comment.comment_id}><CommentCard {...comment} user={user} noInteraction={noInteraction} /></li>
                     })}
                 </ul>
             </div>
