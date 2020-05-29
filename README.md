@@ -6,6 +6,13 @@ Hosted on Netlify https://dyrt.netlify.app/
 
 The backend API is hosted on Heroku https://lk-news.herokuapp.com/api. See the GitHub repo [here](https://github.com/Lajanke/ncnews)
 
+To run this project locally:
+
+- requires: Node js
+- Clone this repository, git clone https://github.com/Lajanke/did_you_read_that.gitin
+- npm install, to install dependencies
+- npm start, to start the app
+- Open up localhost:3000 in your browser
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
