@@ -79,13 +79,14 @@ class VotingButtons extends React.Component {
     }
 
     render() {
-        const { votes } = this.props
+        const { votes, type } = this.props
+        console.log(type)
         const { votesCast, downvoteClicked, upvoteClicked, err } = this.state
         if (err) return <ErrorDisplayer msg={err} />
 
         return (
-            <div>
-                <p>{votes + votesCast}</p>
+            <div >
+                <p className={(type === 'articles') ? 'aVotingButtons' : 'cVotingButtons'}>{votes + votesCast}</p>
                 <button onClick={this.handleDownVote} className={`${downvoteClicked ? 'downClicked' : 'notClicked'}`}>˅</button>
                 <button onClick={this.handleUpVote} className={`${upvoteClicked ? 'upClicked' : 'notClicked'}`}>˄</button>
             </div>

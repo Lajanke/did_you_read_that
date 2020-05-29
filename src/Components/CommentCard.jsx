@@ -33,7 +33,7 @@ class CommentCard extends React.Component {
         if (err) return <ErrorDisplayer msg={err} />
 
         return (
-            <article>
+            <div>
                 <p><Link to={`/users/${author}`}>✎{author}</Link></p>
                 <p>{body}</p>
                 <p>Created: {new Date(created_at).toDateString()}</p>
@@ -41,9 +41,9 @@ class CommentCard extends React.Component {
                     <VotingButtons votes={votes} type='comments' id={comment_id} />
                 }
                 {user === author &&
-                    <button onClick={this.handleDeleteComment}>DELETE</button>
+                    <button onClick={this.handleDeleteComment} className='aDelete'>DELETE</button>
                 }
-            </article>
+            </div>
         )
     }
 
