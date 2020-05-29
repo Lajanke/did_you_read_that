@@ -16,12 +16,12 @@ class NavBar extends React.Component {
     return (
       <nav>
         {!navOpen &&
-          <i onClick={this.handleNavClick} className="fas fa-ellipsis-h fa-3x"></i>
+          <i onClick={this.handleNavClick} className="fas fa-ellipsis-h fa-2x"></i>
         }
 
         {navOpen &&
-          <div className='navDrawer'>
-            <i onClick={this.handleNavClick} className="fas fa-times fa-3x"></i>
+          <div className={`navDrawer${navOpen}`}>
+            <i onClick={this.handleNavClick} className="fas fa-times fa-2x"></i>
             <ul>
               <Link to='/' onClick={this.handleNavClick}>
                 <li>HOME</li>
