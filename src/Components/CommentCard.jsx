@@ -3,6 +3,7 @@ import * as api from '../utils/api';
 import { Link } from '@reach/router';
 import VotingButtons from './VotingButtons';
 import ErrorDisplayer from './ErrorDisplayer';
+import Sty from './StyledComponents';
 
 class CommentCard extends React.Component {
     state = {
@@ -33,17 +34,19 @@ class CommentCard extends React.Component {
         if (err) return <ErrorDisplayer msg={err} />
 
         return (
-            <div>
-                <p><Link to={`/users/${author}`}>✎{author}</Link></p>
-                <p>{body}</p>
-                <p>Created: {new Date(created_at).toDateString()}</p>
-                {!noInteraction &&
-                    <VotingButtons votes={votes} type='comments' id={comment_id} />
-                }
-                {user === author &&
-                    <button onClick={this.handleDeleteComment} className='aDelete'>DELETE</button>
-                }
-            </div>
+            <Sty.CommentCard>
+                <section>
+                    <p className='ccAuthor'><Link to={`/users/${author}`}>✎{author}</Link></p>
+                    <p className='ccBody'>{body}</p>
+                    <p className='ccDate'>{new Date(created_at).toDateString()}</p>
+                    {!noInteraction &&
+                        <VotingButtons className='ccVotes' votes={votes} type='comments' id={comment_id} />
+                    }
+                    {user === author &&
+                        <button onClick={this.handleDeleteComment} className='ccDelete'>DELETE</button>
+                    }
+                </section>
+            </Sty.CommentCard>
         )
     }
 

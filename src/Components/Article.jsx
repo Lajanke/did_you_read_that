@@ -60,8 +60,7 @@ class Article extends React.Component {
             <p className='aTopic'><Link to={`/articles/${topic}`}>{topic}</Link></p>
             <p className='aAuthor'><Link to={`/users/${author}`}>✎{author}</Link></p>
             <p className='aBody'>{body}</p>
-            <p className='aDate'>created at: {new Date(created_at).toDateString()}</p>
-
+            <p className='aDate'>{new Date(created_at).toDateString()}</p>
             {user === author &&
               <button onClick={this.handleDeleteArticle} className='aDelete'>DELETE</button>
             }
@@ -72,7 +71,7 @@ class Article extends React.Component {
               </div>
             }
           </div>
-          </Sty.Article>
+        </Sty.Article>
         <CommentList article_id={article_id} user={user} p={p} limit={limit} noInteraction={noInteraction} />
       </article>
     )
