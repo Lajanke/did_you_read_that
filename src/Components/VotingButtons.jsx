@@ -80,7 +80,6 @@ class VotingButtons extends React.Component {
 
     render() {
         const { votes, type } = this.props
-        console.log(type)
         const { votesCast, downvoteClicked, upvoteClicked, err } = this.state
         if (err) return <ErrorDisplayer msg={err} />
         
