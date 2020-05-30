@@ -133,11 +133,6 @@ input {
   margin: 0.2rem;
 }
 
-select {
-  margin-left: 0.5rem;
-  max-width: 80px;
-}
-
 ul {
   margin: auto;
   padding: 0;

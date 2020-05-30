@@ -49,7 +49,7 @@ class CommentList extends React.Component {
             }
 
             button {
-                margin: 0 0.3rem 0 0.3rem;
+                margin-right: 0.3rem;
             }
         `;
 

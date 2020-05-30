@@ -229,4 +229,158 @@ Sty.ArticleAdder = styled.div`
     }
 `;
 
+Sty.ArticleForm = styled.div`
+
+* {
+    padding: 0;
+}
+
+button {
+    padding: 0.3rem 0 0.3rem 0;
+}
+
+.titleLabel {
+    grid-area: title;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.articleLabel {
+    grid-area: article;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topicLabel {
+    grid-area: topic;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleTextArea {
+    grid-area: titleText;
+    font-size: 1rem;
+    width: 225px;
+    border-style: none;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.bodyTextArea {
+    grid-area: articleText;
+    font-size: 1rem;
+    width: 225px;
+    border-style: none;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+select {
+    grid-area: select;
+    font-size: 1rem; 
+    width: 225px;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.postButton {
+    grid-area: post;
+    font-size: 1rem;
+    width: 225px;
+    justify-self: right;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.resetInput {
+    grid-area: reset;
+    font-size: 1rem;
+    width: 225px;
+    justify-self: right;
+    margin: 0.3rem 0 0.3rem 0;
+}
+
+    p {
+    grid-area: alerts;
+    font-size: 1rem;
+    width: 225px;
+    justify-self: right;
+    margin: 0.3rem 0 0.3rem 0;
+}
+
+    form {
+        margin: auto;
+        width: 300px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(1fr, 6);
+        grid-template-rows: auto;
+        grid-template-areas: 
+            'title titleText'
+            'article articleText'
+            'topic select'
+            'reset .'
+            'post .'
+            'alerts .'
+            ;
+        }
+
+    textarea {
+        resize: none;
+        color: #272a2b;
+    }
+`;
+
+Sty.CommentForm = styled.div`
+    * {
+        padding: 0;
+    }
+
+    button {
+        padding: 0.3rem 0 0.3rem 0;
+    }
+
+    .commentText {
+        grid-area: commentText;
+        font-size: 1rem;
+        width: 250px;
+        border-style: none;
+        margin: 0.5rem 0 0.5rem 0;
+    }
+
+    .postButton {
+        grid-area: postButton;
+        font-size: 1rem;
+        width: 250px;
+        justify-self: right;
+        margin: 0.5rem 0 0.5rem 0;
+    }
+
+    p {
+        grid-area: alerts;
+        font-size: 1rem;
+        width: 250px;
+        justify-self: right;
+        margin: 0.3rem 0 0.3rem 0;
+    }
+
+    form {
+        display: grid;
+        grid-template-rows: repeat(1fr, 3);
+        grid-template-rows: auto;
+        grid-template-areas: 
+            'commentText'
+            'postButton'
+            'alerts'
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+        resize: none;
+        color: #272a2b;
+    }
+`;
+
 export default Sty;
