@@ -3,6 +3,7 @@ import * as api from '../utils/api';
 import ArticleList from './ArticleList';
 import Loader from './Loader';
 import ErrorDisplayer from './ErrorDisplayer';
+import styled from 'styled-components';
 
 class User extends React.Component {
     state = {
@@ -31,12 +32,20 @@ class User extends React.Component {
         if (isLoading) return <Loader />
         if (err) return <ErrorDisplayer msg={err} />
 
+        const User = styled.div`
+            img {
+                max-height: 100px;
+                max-width: 100px;
+                margin-left: 0.5rem;
+            }
+        `;
+
         return (
-            <React.Fragment>
+            <User>
                 <h1>{username}</h1>
-                <img style={{width: '100px'}} src={avatar_url} alt={`${username} avatar`} />
+                <img src={avatar_url} alt={`${username} avatar`} />
                 <ArticleList author={username} />
-            </React.Fragment>
+            </User>
         )
     }
 }

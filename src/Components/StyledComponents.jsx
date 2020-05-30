@@ -5,7 +5,7 @@ const Sty = {};
 Sty.Article = styled.div`
     .aTitle {
         grid-area: title;
-        margin: 0.3rem;
+        margin: 0.5rem 0.3rem 0.3rem 0.3rem;
         font-size: 1.3rem;
     }
 
@@ -162,9 +162,9 @@ Sty.CommentCard = styled.div`
 
     .ccBody {
         grid-area: body;
-        margin: 0.3rem;
+        margin: 0.4rem 0.3rem 0.4rem 0.3rem;
         font-size: 1rem;
-        justify-self: right;
+        justify-self: left;
     }
     
     .ccDelete {

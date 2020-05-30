@@ -1,7 +1,20 @@
 import React from 'react';
 import NavBar from './NavBar';
+import styled from 'styled-components';
 
 const Header = ({ user }) => {
+
+    const Subheader = styled.div`
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0.3rem 0 0.3rem;
+
+        p {
+           margin: 0;
+           font-size: 0.8rem; 
+        }
+    `
+
     return (
         <div>
             <header>
@@ -9,8 +22,10 @@ const Header = ({ user }) => {
                 <div className='chevron'></div>
                 <NavBar />
             </header>
-            <p>{new Date().toDateString()}</p>
-            <p>Logged in as: {user}</p>
+            <Subheader>
+                <p>{new Date().toDateString()}</p>
+                <p>Logged in as: {user}</p>
+            </Subheader>
         </div>
     )
 }

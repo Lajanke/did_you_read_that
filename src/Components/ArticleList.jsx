@@ -5,6 +5,7 @@ import ArticleCard from './ArticleCard';
 import SortingForm from './SortingForm';
 import Loader from './Loader';
 import ErrorDisplayer from './ErrorDisplayer';
+import styled from 'styled-components';
 
 class ArticleList extends React.Component {
     state = {
@@ -39,8 +40,14 @@ class ArticleList extends React.Component {
         if (isLoading) return <Loader />
         if (err) return <ErrorDisplayer msg={err} />
 
+        const ArticleList = styled.div`
+            p {
+                margin: 0 0 1rem 0.3rem;
+            }
+        `;
+
         return (
-            <React.Fragment>
+            <ArticleList>
                 <h1>{slug ? `${slug}` : 'Articles'}</h1>
                 <p>{total_count} articles</p>
                 <SortingForm getArticles={this.getArticles} />
@@ -50,7 +57,7 @@ class ArticleList extends React.Component {
                         return <li key={article_id}><Link to={`/article/${article_id}`}><ArticleCard {...article} /></Link></li>
                     })}
                 </ul>
-            </React.Fragment>
+            </ArticleList>
         )
     }
 }
