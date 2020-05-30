@@ -36,7 +36,7 @@ class CommentCard extends React.Component {
         return (
             <Sty.CommentCard>
                 <section>
-                    <p className='ccAuthor'><Link to={`/users/${author}`}>✎{author}</Link></p>
+                    <p className='ccAuthor'><Link to={`/users/${author}`}>✎ {author}</Link></p>
                     <p className='ccBody'>{body}</p>
                     <p className='ccDate'>{new Date(created_at).toDateString()}</p>
                     {!noInteraction &&

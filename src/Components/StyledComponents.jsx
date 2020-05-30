@@ -209,4 +209,24 @@ Sty.CommentCard = styled.div`
     }
 `;
 
+Sty.Subheader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.3rem 0 0.3rem;
+
+    p {
+        margin: 0;
+        font-size: 0.8rem; 
+    }
+`;
+
+Sty.ArticleAdder = styled.div`
+    text-align: right;
+    margin-right: 0.3rem;
+
+    i {
+        color: darkolivegreen;
+    }
+`;
+
 export default Sty;

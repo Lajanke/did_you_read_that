@@ -1,19 +1,10 @@
 import React from 'react';
 import NavBar from './NavBar';
-import styled from 'styled-components';
+//import styled from 'styled-components';
+
+import Sty from './StyledComponents';
 
 const Header = ({ user }) => {
-
-    const Subheader = styled.div`
-        display: flex;
-        justify-content: space-between;
-        margin: 0 0.3rem 0 0.3rem;
-
-        p {
-           margin: 0;
-           font-size: 0.8rem; 
-        }
-    `
 
     return (
         <div>
@@ -22,10 +13,10 @@ const Header = ({ user }) => {
                 <div className='chevron'></div>
                 <NavBar />
             </header>
-            <Subheader>
+            <Sty.Subheader>
                 <p>{new Date().toDateString()}</p>
                 <p>Logged in as: {user}</p>
-            </Subheader>
+            </Sty.Subheader>
         </div>
     )
 }

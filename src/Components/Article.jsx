@@ -58,7 +58,7 @@ class Article extends React.Component {
           <div className='articleGrid'>
             <h2 className='aTitle'>{title}</h2>
             <p className='aTopic'><Link to={`/articles/${topic}`}>{topic}</Link></p>
-            <p className='aAuthor'><Link to={`/users/${author}`}>✎{author}</Link></p>
+            <p className='aAuthor'><Link to={`/users/${author}`}>✎ {author}</Link></p>
             <p className='aBody'>{body}</p>
             <p className='aDate'>{new Date(created_at).toDateString()}</p>
             {user === author &&

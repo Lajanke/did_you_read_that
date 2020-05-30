@@ -47,8 +47,8 @@ class CommentAdder extends React.Component {
             <React.Fragment>
                 {!commentFormOpen &&
                     <React.Fragment>
-                        <span role='img' aria-label='speech bubble'>💬 </span>
-                        <button onClick={this.handleCommentClick}>Comment</button>
+                        
+                        <button onClick={this.handleCommentClick}><span role='img' aria-label='speech bubble'>💬 </span>New Comment</button>
                     </React.Fragment>
                 }
                 {commentFormOpen &&
