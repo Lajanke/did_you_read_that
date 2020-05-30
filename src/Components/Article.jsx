@@ -8,57 +8,57 @@ import ErrorDisplayer from './ErrorDisplayer';
 import styled from 'styled-components';
 
 class Article extends React.Component {
-    state = {
-        article: {},
-        isLoading: true,
-        deleted: false,
-        err: '',
+  state = {
+    article: {},
+    isLoading: true,
+    deleted: false,
+    err: '',
+  }
+
+  componentDidMount() {
+    this.getArticleById()
+  }
+
+  getArticleById = async () => {
+    const { article_id } = this.props;
+    try {
+      const article = await api.fetchArticleById(article_id)
+      this.setState({ article: article, isLoading: false })
+    } catch (err) {
+      this.setState({ err: err.response.data.msg, isLoading: false })
     }
+  }
 
-    componentDidMount() {
-        this.getArticleById()
-    }
+  handleDeleteArticle = () => {
+    this.deleteArticle()
+  }
 
-    getArticleById = async () => {
-        const { article_id } = this.props;
-        try {
-            const article = await api.fetchArticleById(article_id)
-            this.setState({ article: article, isLoading: false })
-        } catch (err) {
-            this.setState({ err: err.response.data.msg, isLoading: false })
-        }
-    }
+  deleteArticle = () => {
+    const { article_id } = this.props
+    api.deleteById(article_id, 'articles')
+      .then(() => {
+        this.setState({ deleted: true })
+      })
+      .catch(err => {
+        this.setState({ err: err.response.data.msg, isLoading: false })
+      })
+  }
 
-    handleDeleteArticle = () => {
-        this.deleteArticle()
-    }
+  render() {
+    const { isLoading, err, deleted } = this.state
+    const { title, topic, votes, author, body, created_at, comment_count, article_id } = this.state.article
+    const { p, limit, noInteraction, user } = this.props
+    if (isLoading) return <Loader />
+    if (deleted) return <p>Article deleted</p>
+    if (err) return <ErrorDisplayer msg={err} />
 
-    deleteArticle = () => {
-        const { article_id } = this.props
-        api.deleteById(article_id, 'articles')
-            .then(() => {
-                this.setState({ deleted: true })
-            })
-            .catch(err => {
-                this.setState({ err: err.response.data.msg, isLoading: false })
-            })
-    }
-
-    render() {
-        const { isLoading, err, deleted } = this.state
-        const { title, topic, votes, author, body, created_at, comment_count, article_id } = this.state.article
-        const { p, limit, noInteraction, user } = this.props
-        if (isLoading) return <Loader />
-        if (deleted) return <p>Article deleted</p>
-        if (err) return <ErrorDisplayer msg={err} />
-
-        const Div = styled.div`
-        .aTitle {
+    const Div = styled.div`
+          .aTitle {
             grid-area: title;
             margin: 0.3rem;
             font-size: 1.3rem;
           }
-          
+
           .aAuthor {
             grid-area: author;
             margin: 0.3rem;
@@ -129,31 +129,31 @@ class Article extends React.Component {
           }
         `
 
-        return (
-            <article>
-                <Div>
-                <div className='articleGrid'>
-                <h2 className='aTiltle'>{title}</h2>
-                <p className='aTopic'><Link to={`/articles/${topic}`}>{topic}</Link></p>
-                <p className='aAuthor'><Link to={`/users/${author}`}>✎{author}</Link></p>
-                <p className='aBody'>{body}</p>
-                <p className='aDate'>created at: {new Date(created_at).toDateString()}</p>
-                
-                {user === author &&
-                    <button onClick={this.handleDeleteArticle} className='aDelete'>DELETE</button>
-                }
-                <p className='aComments'><span role='img' aria-label='speech bubble'>💬 </span>{comment_count}</p>
-                {!noInteraction &&
-                    <div className='aVotingButtons'>
-                    <VotingButtons votes={votes} id={article_id} type={'articles'} />
-                    </div>
-                }
-                </div>
-                </Div>
-                <CommentList article_id={article_id} user={user} p={p} limit={limit} noInteraction={noInteraction} />
-            </article>
-        )
-    }
+    return (
+      <article>
+        <Div>
+          <div className='articleGrid'>
+            <h2 className='aTitle'>{title}</h2>
+            <p className='aTopic'><Link to={`/articles/${topic}`}>{topic}</Link></p>
+            <p className='aAuthor'><Link to={`/users/${author}`}>✎{author}</Link></p>
+            <p className='aBody'>{body}</p>
+            <p className='aDate'>created at: {new Date(created_at).toDateString()}</p>
+
+            {user === author &&
+              <button onClick={this.handleDeleteArticle} className='aDelete'>DELETE</button>
+            }
+            <p className='aComments'><span role='img' aria-label='speech bubble'>💬 </span>{comment_count}</p>
+            {!noInteraction &&
+              <div className='aVotingButtons'>
+                <VotingButtons votes={votes} id={article_id} type={'articles'} />
+              </div>
+            }
+          </div>
+        </Div>
+        <CommentList article_id={article_id} user={user} p={p} limit={limit} noInteraction={noInteraction} />
+      </article>
+    )
+  }
 }
 
 export default Article;
