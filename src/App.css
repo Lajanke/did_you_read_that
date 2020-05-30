@@ -11,7 +11,6 @@ body, html {
   max-width: 100%;
   margin: auto;
   background-color: #272a2b;
-  /*background-color: #0e1530;*/
   color: #d2e4f1;
 }
 
@@ -19,7 +18,18 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  z-index: 1;
+}
+
+.logo {
+  border-left: 4px solid tomato;
+  border-bottom: 4px solid tomato;
+  border-top: 4px solid darkolivegreen;
+  border-right: 4px solid darkolivegreen;
+  width: 20px;
+  height: 20px;
+  transform: rotate(-45deg);
+  margin-right: 2rem;
+  margin-top: 0.3rem;
 }
 
 /*Nav Drawer-----------------------------------------------------------*/
@@ -70,8 +80,9 @@ header {
 }
 
 h1 {
+  display: flex;
   background-color: #d2e4f1;
-  padding: 0.2rem 4rem 0.2rem 4rem;
+  padding: 0.2rem 4rem 0.2rem 2rem;
   color: #0e1530;
 }
 
@@ -84,6 +95,10 @@ button {
   background-color: #d2e4f1;
   border: none;
   padding: 0.2rem;
+}
+
+.voteButton {
+  color: #232426;
 }
 
 select {
@@ -105,13 +120,22 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
 }
 
 .articleForm {
   flex-direction: column;
-  max-width: 400px;
+  max-width: 300px;
   margin: auto;
+}
+
+input {
+  margin: 0.2rem;
+}
+
+select {
+  margin-left: 0.5rem;
+  max-width: 80px;
 }
 
 ul {
@@ -125,11 +149,6 @@ a {
   color: #d2e4f1;
 }
 
-/*img {
-  max-width: 100px;
-  max-height: 100px;
-}*/
-
 .topic {
   border-style: solid;
   border-width: 1px 0 0 0;
@@ -139,14 +158,21 @@ a {
 
 .upClicked {
   background-color: darkolivegreen;
+  padding: 0.5rem;
 }
 
 .downClicked {
   background-color: tomato;
+  padding: 0.5rem;
 }
 
 .notClicked {
-  background-color: aliceblue;
+  padding: 0.5rem;
+}
+
+.voting {
+  display: flex;
+  font-size: 1.6rem;
 }
 
 .loader {
@@ -229,85 +255,6 @@ section {
     'comments votes'
   ;
 }
-
-
-/*article grid --------------------------------------*/
-
-/*.aTitle {
-  grid-area: title;
-  margin: 0.3rem;
-  font-size: 1.3rem;
-}
-
-.aAuthor {
-  grid-area: author;
-  margin: 0.3rem;
-  font-size: 0.9rem;
-}
-
-.aTopic {
-  grid-area: topic;
-  border-style: dotted;
-  border-color: #d2e4f1;
-  border-width: 1px 0 1px 1px;
-  align-self: center;
-  margin: 0.3rem;
-  font-size: 1rem;
-  padding: 0.2rem;
-}
-
-.aDate {
-  grid-area: date;
-  margin: 0.3rem;
-  font-size: 0.8rem;
-  justify-self: right;
-}
-
-.aComments {
-  grid-area: comments;
-  margin: 0.3rem;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.aVotingButtons {
-  grid-area: votes;
-  margin: 0.3rem;
-  font-size: 1rem;
-  justify-self: right;
-}
-
-.aBody {
-  grid-area: body;
-  margin: 0.3rem;
-  font-size: 1rem;
-  justify-self: right;
-}
-
-.aDelete {
-  grid-area: delete;
-  margin: 0.3rem;
-  font-size: 1rem;
-  justify-self: left;
-}
-
-article {
-  border-style: dotted;
-  border-width: 1px 0 0 0;
-  margin: auto;
-  display: grid;
-  margin: 0.1rem;
-  grid-template-columns: 50% auto;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: 
-    'title title'
-    'author topic'
-    'body body'
-    'delete date'
-    'comments votes'
-  ;
-}*/
 
 /* media queries */
 

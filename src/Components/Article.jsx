@@ -93,7 +93,6 @@ class Article extends React.Component {
           .aVotingButtons {
             grid-area: votes;
             margin: 0.3rem;
-            font-size: 1rem;
             justify-self: right;
           }
           
@@ -133,7 +132,7 @@ class Article extends React.Component {
         return (
             <article>
                 <Div>
-                    <div className='articleGrid'>
+                <div className='articleGrid'>
                 <h2 className='aTiltle'>{title}</h2>
                 <p className='aTopic'><Link to={`/articles/${topic}`}>{topic}</Link></p>
                 <p className='aAuthor'><Link to={`/users/${author}`}>✎{author}</Link></p>
