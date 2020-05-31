@@ -578,4 +578,20 @@ form {
 }
 `;
 
+Sty.ErrorDisplay = styled.div`
+
+    p {
+        font-Size: 2rem;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    img {
+        display: flex;
+        margin: auto;
+    }
+`;
+
 export default Sty;

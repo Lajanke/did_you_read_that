@@ -1,13 +1,14 @@
 import React from 'react';
+import Sty from './StyledComponents';
 
 const ErrorDisplayer = ({ msg }) => {
-    const err = msg ? msg : 'Oh no, that path doesn\'t exist'
+    const err = msg ? msg : 'Path not found!'
 
     return (
-        <div>
+        <Sty.ErrorDisplay>
             <p>{err}</p>
-            <img style={{width: '400px'}} src="https://media.giphy.com/media/zuzqMRmyVesMg/giphy.gif" alt="firefly gif you can't"/>
-        </div>
+            <img src="https://media.giphy.com/media/3o6fIX5mC1mSgNU0BW/giphy.gif" alt="The good place, bad place gif"/>
+        </Sty.ErrorDisplay>
     )
 }
 
