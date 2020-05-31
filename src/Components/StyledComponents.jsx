@@ -4,7 +4,7 @@ const Sty = {};
 
 Sty.AppContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: ${(props) => props.theme.colors.bg};
     * {
         color: ${(props) => props.theme.colors.text};
