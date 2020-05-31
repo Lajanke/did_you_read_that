@@ -3,15 +3,16 @@
 }
 
 * {
+  font-family: 'Barlow', sans-serif;
+  letter-spacing: 0.01em;
   font-weight: 300;
-  color: #d2e4f1;
+  color: #fff;
 }
 
 body, html {
   max-width: 100%;
   margin: auto;
   background-color: #272a2b;
-  color: #d2e4f1;
 }
 
 header {
@@ -21,10 +22,10 @@ header {
 }
 
 .logo {
-  border-left: 4px solid tomato;
-  border-bottom: 4px solid tomato;
-  border-top: 4px solid darkolivegreen;
-  border-right: 4px solid darkolivegreen;
+  border-left: 4px solid #b81111;
+  border-bottom: 4px solid #b81111;
+  border-top: 4px solid #3f8c38;
+  border-right: 4px solid #3f8c38;
   width: 20px;
   height: 20px;
   transform: rotate(-45deg);
@@ -48,11 +49,10 @@ header {
   top: 0;
   right: 0;
   animation: slidein 0.3s;
-  overflow: scroll;
-  z-index: 100;
   overflow: hidden;
+  z-index: 100;
+  
 }
-
 
 @keyframes slidein {
   from {
@@ -80,13 +80,6 @@ header {
   margin-right: 1rem;
 }
 
-h1 {
-  display: flex;
-  background-color: #d2e4f1;
-  padding: 0.2rem 4rem 0.2rem 2rem;
-  color: #0e1530;
-}
-
 nav {
   padding: 1.5rem;
 }
@@ -95,46 +88,45 @@ nav {
   display: none;
 }
 
-button {
-  color: #0e1530;
+h1 {
+  display: flex;
   background-color: #d2e4f1;
-  border: none;
-  padding: 0.2rem;
+  padding: 0.2rem 4rem 0.2rem 2rem;
+  color: #000;
 }
 
-.voteButton {
-  color: #232426;
+button {
+  background-color: #2d3b40;
+  color: #fff;
+  border-width: 0 0 1px 0;
+  border-color: #d2e4f1;
+  padding: 0.4rem;
 }
 
 select {
-  color: #0e1530;
+  color: #000;
   background-color: #d2e4f1;
   border: none;
   padding: 0.2rem;
 }
 
 option {
-  color: #0e1530;
+  color: #000;
 }
 
 input {
-  color: #0e1530;
-}
-
-input {
-  margin: 0.2rem;
+  color: #000;
 }
 
 ul {
   margin: auto;
   padding: 0;
   list-style: none;
-  max-width: 500px;
+  width: 100%;
 }
 
 a {
   text-decoration: none;
-  color: #d2e4f1;
 }
 
 .topic {
@@ -145,12 +137,12 @@ a {
 }
 
 .upClicked {
-  background-color: darkolivegreen;
+  background-color: #3f8c38;
   padding: 0.5rem;
 }
 
 .downClicked {
-  background-color: tomato;
+  background-color: #b81111;
   padding: 0.5rem;
 }
 
@@ -164,10 +156,10 @@ a {
 }
 
 .loader {
-  border-left: 12px solid tomato;
-  border-bottom: 12px solid tomato;
-  border-top: 12px solid darkolivegreen;
-  border-right: 12px solid darkolivegreen;
+  border-left: 12px solid #b81111;
+  border-bottom: 12px solid #b81111;
+  border-top: 12px solid #3f8c38;
+  border-right: 12px solid #3f8c38;
   width: 75px;
   height: 75px;
   animation: spin 5s linear infinite;
@@ -193,9 +185,9 @@ a {
   }
 
   li {
-    border-style: dotted;
+    border-style: solid;
     border-width: 0 1px 1px 0;
-    border-color: #d2e4f1;
+    border-color: #2d3b40;
     margin: 0.4rem;
   }
 

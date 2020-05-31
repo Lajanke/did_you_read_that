@@ -12,7 +12,9 @@ Sty.Article = styled.div`
     .aAuthor {
         grid-area: author;
         margin: 0.3rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        font-style: italic;
+        font-weight: 200;
     }
         
     .aTopic {
@@ -104,7 +106,9 @@ Sty.ArticleCard = styled.div`
     .acAuthor {
         grid-area: author;
         margin: 0.3rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        font-style: italic;
+        font-weight: 200;
     }
     
     .acTopic {
@@ -152,8 +156,9 @@ Sty.ArticleCard = styled.div`
         '. date'
         'comments votes'
         ;
-        border: dotted;
+        border: solid;
         border-width: 0 0 1px 0;
+        border-color: #2d3b40;
         margin-bottom: 0.5rem;
     }
 
@@ -168,7 +173,9 @@ Sty.CommentCard = styled.div`
     .ccAuthor {
         grid-area: author;
         margin: 0.3rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        font-style: italic;
+        font-weight: 200;
     }
     
     .ccDate {
@@ -221,8 +228,9 @@ Sty.CommentCard = styled.div`
         'null votes'
         'delete votes'
         ;
-        border: dotted;
+        border: solid;
         border-width: 0 0 1px 0;
+        border-color: #2d3b40;
         margin-bottom: 0.5rem;
     }
 
@@ -247,9 +255,10 @@ Sty.Subheader = styled.div`
 Sty.ArticleAdder = styled.div`
     text-align: right;
     margin-right: 0.3rem;
+    font-size: 1.3rem;
 
     i {
-        color: darkolivegreen;
+        color: #3f8c38;
     }
 `;
 
@@ -353,7 +362,7 @@ select {
 
     textarea {
         resize: none;
-        color: #272a2b;
+        color: #000;
     }
 
     
@@ -409,7 +418,7 @@ Sty.CommentForm = styled.div`
 
     textarea {
         resize: none;
-        color: #272a2b;
+        color: #000;
     }
 
    

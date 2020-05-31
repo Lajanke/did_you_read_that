@@ -72,7 +72,7 @@ class ArticleAdderForm extends React.Component {
                     <label className='articleLabel'>Article:
                     <textarea type="textarea" name='body' required='required' onChange={this.handleInputChange} placeholder='What do you have to say...' value={body} rows='10' className='bodyTextArea' />
                     </label>
-                    <button onClick={this.handleClearForm} className='resetInput'>Clear Form</button>
+                    <button onClick={this.handleClearForm} className='resetInput'>CLEAR FORM</button>
                     <button className='postButton'>POST ARTICLE</button>
                     {submitted &&
                         <p>Article submitted. See it <Link to={`/article/${article_id}`}>HERE</Link></p>
