@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import Sty from './StyledComponents';
 
 class NavBar extends React.Component {
   state = {
@@ -16,8 +17,11 @@ class NavBar extends React.Component {
     return (
       <nav>
         <div className='smallScreenNav'>
+
           {!navOpen &&
-            <i onClick={this.handleNavClick} className="fas fa-ellipsis-h fa-2x"></i>
+            <Sty.NavButtons>
+              <i onClick={this.handleNavClick} className="fas fa-ellipsis-h fa-2x"></i>
+            </Sty.NavButtons>
           }
 
           {navOpen &&

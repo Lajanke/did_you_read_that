@@ -2,6 +2,76 @@ import styled from 'styled-components'
 
 const Sty = {};
 
+Sty.AppContainer = styled.div`
+    width: 100%;
+    height: 100vh;
+    background: ${(props) => props.theme.colors.bg};
+    * {
+        color: ${(props) => props.theme.colors.text};
+        p, h2, h3 {
+            font-weight: ${(props) => props.theme.weights.weight};
+        }
+
+        h1 {
+            color: #000;
+        }
+
+        select {
+            color: #000;
+        }
+        
+        option {
+            color: #000;
+        }
+        
+        textarea {
+            background-color: #d2e4f1;
+        }
+    }
+    
+    button {
+        color: #fff;
+    }
+`;
+
+Sty.Header = styled.div`
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .logo {
+        border-left: 4px solid #b81111;
+        border-bottom: 4px solid #b81111;
+        border-top: 4px solid #3f8c38;
+        border-right: 4px solid #3f8c38;
+        width: 20px;
+        height: 20px;
+        transform: rotate(-45deg);
+        margin-right: 2rem;
+        margin-top: 0.3rem;
+    }
+
+    h1 {
+        background-color: #d2e4f1;
+        padding: 0.2rem 4rem 0.2rem 2rem;
+        color: #000;
+      }
+`;
+
+Sty.NavButtons = styled.div`
+     button: {
+        margin-right: 1rem;
+     }
+`;
+
+Sty.FeaturedArticle = styled.div`
+      h1 {
+          color: #000;
+      }
+`
+
 Sty.Article = styled.div`
     .aTitle {
         grid-area: title;
@@ -14,18 +84,23 @@ Sty.Article = styled.div`
         margin: 0.3rem;
         font-size: 1rem;
         font-style: italic;
-        font-weight: 200;
+        font-weight: 200;        
     }
         
     .aTopic {
         grid-area: topic;
         background-color: #2d3b40;
+        color: #fff;
         align-self: center;
         margin: 0.3rem;
         font-size: 1rem;
         padding: 0.2rem 0.2rem 0.2rem 1rem;
     }
-        
+
+    .aTopic a {
+        color: #fff;
+    }  
+
     .aDate {
         grid-area: date;
         margin: 0.3rem;
@@ -114,6 +189,7 @@ Sty.ArticleCard = styled.div`
     .acTopic {
         grid-area: topic;
         background-color: #2d3b40;
+        color: #fff;
         align-self: center;
         margin: 0.3rem;
         font-size: 1rem;
@@ -253,12 +329,19 @@ Sty.Subheader = styled.div`
 `;
 
 Sty.ArticleAdder = styled.div`
-    text-align: right;
-    margin-right: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.3rem;
     font-size: 1.3rem;
 
-    i {
+    .fa-plus {
         color: #3f8c38;
+    }
+
+    .fa-lightbulb {
+        color: ${(props) => props.theme.colors.text};
+        margin: 0 0.3rem 0 0.3rem;
     }
 `;
 
@@ -420,29 +503,31 @@ Sty.CommentForm = styled.div`
         resize: none;
         color: #000;
     }
-
-   
 `;
 
 Sty.ArticleList = styled.div`
-p {
-    margin: 0 0 1rem 0.3rem;
-}
+    h1 {
+        color: #000;
+    }
+
+    p {
+        margin: 0 0 1rem 0.3rem;
+    }
 
 `;
 
-Sty.TopicCard = styled.div`
-        
-h2 {
-    background-color: #2d3b40;
-    padding: 0.2rem 0 0.2rem 1rem;
-    margin: 0.3rem 0 0.3rem 0;
-}
+Sty.TopicCard = styled.div`    
+    h2 {
+        background-color: #2d3b40;
+        padding: 0.2rem 0 0.2rem 1rem;
+        margin: 0.3rem 0 0.3rem 0;
+        color: #fff;
+    }
 
-p {
-    text-align: right;
-    margin: 0.5rem 0.3rem 0.5rem 0.3rem;
-}
+    p {
+        text-align: right;
+        margin: 0.5rem 0.3rem 0.5rem 0.3rem;
+    }
 `;
 
 Sty.SortForm = styled.div`

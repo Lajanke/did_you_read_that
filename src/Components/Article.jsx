@@ -45,7 +45,7 @@ class Article extends React.Component {
   }
 
   render() {
-    const { isLoading, err, deleted } = this.state
+    const { isLoading, err, deleted, } = this.state
     const { title, topic, votes, author, body, created_at, comment_count, article_id } = this.state.article
     const { p, limit, noInteraction, user } = this.props
     if (isLoading) return <Loader />
@@ -57,7 +57,7 @@ class Article extends React.Component {
         <Sty.Article>
           <div className='articleGrid'>
             <h2 className='aTitle'>{title}</h2>
-            <p className='aTopic'><Link to={`/articles/${topic}`}>{topic}</Link></p>
+            <h3 className='aTopic'><Link to={`/articles/${topic}`}>{topic}</Link></h3>
             <p className='aAuthor'><Link to={`/users/${author}`}>✎ {author}</Link></p>
             <p className='aBody'>{body}</p>
             <p className='aDate'>{new Date(created_at).toDateString()}</p>

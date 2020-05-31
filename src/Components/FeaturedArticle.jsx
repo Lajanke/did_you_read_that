@@ -5,6 +5,7 @@ import Loader from './Loader';
 import ErrorDisplayer from './ErrorDisplayer';
 import Article from './Article';
 import styled from 'styled-components';
+import Sty from './StyledComponents';
 
 class FeaturedArticle extends React.Component {
     state = {
@@ -38,14 +39,13 @@ class FeaturedArticle extends React.Component {
         `;
 
         return (
-            <article>
+            <Sty.FeaturedArticle>
                 <h1>Featured Article</h1>
                 <P>See the full article and all comments <Link to={`/article/${article_id}`}>HERE</Link></P>
                 <Article article_id={article_id} p={1} limit={3} noInteraction='noInteraction' />
-            </article>
+            </Sty.FeaturedArticle>
         )
     }
 }
-
 
 export default FeaturedArticle;
