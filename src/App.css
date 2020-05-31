@@ -42,6 +42,7 @@ header {
   width: 50vw;
   height: 100vh;
   background-color: #232426;
+  box-shadow: -10px 0px 28px -2px rgba(0,0,0,0.68);
   opacity: 0.98;
   position: fixed;
   top: 0;
@@ -90,6 +91,10 @@ nav {
   padding: 1.5rem;
 }
 
+.bigScreenNav {
+  display: none;
+}
+
 button {
   color: #0e1530;
   background-color: #d2e4f1;
@@ -116,19 +121,6 @@ input {
   color: #0e1530;
 }
 
-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 0 0 1rem 0;
-}
-
-.articleForm {
-  flex-direction: column;
-  max-width: 300px;
-  margin: auto;
-}
-
 input {
   margin: 0.2rem;
 }
@@ -137,6 +129,7 @@ ul {
   margin: auto;
   padding: 0;
   list-style: none;
+  max-width: 500px;
 }
 
 a {
@@ -190,6 +183,43 @@ a {
 
 @media only screen and (min-width: 800px) {
   body {
-    max-width: 800px;
+    max-width: 1200px;
   }
+
+  ul {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  li {
+    border-style: dotted;
+    border-width: 0 1px 1px 0;
+    border-color: #d2e4f1;
+    margin: 0.4rem;
+  }
+
+  section {
+    border: none;
+  }
+
+  .smallScreenNav {
+    display: none;
+  }
+
+  .bigScreenNav {
+    display: flex;
+  }
+
+  .bigScreenNav ul {
+    display: flex;
+    flex-direction: row;
+}
+
+  .bigScreenNav li {
+    margin: 0.2rem 0 0.5rem 1rem;
+    padding: 0.3rem;
+    font-size: 1rem;
+  }
+
 }

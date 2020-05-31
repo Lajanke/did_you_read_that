@@ -15,26 +15,43 @@ class NavBar extends React.Component {
     const { navOpen } = this.state;
     return (
       <nav>
-        {!navOpen &&
-          <i onClick={this.handleNavClick} className="fas fa-ellipsis-h fa-2x"></i>
-        }
+        <div className='smallScreenNav'>
+          {!navOpen &&
+            <i onClick={this.handleNavClick} className="fas fa-ellipsis-h fa-2x"></i>
+          }
 
-        {navOpen &&
-          <div className={`navDrawer${navOpen}`}>
-            <i onClick={this.handleNavClick} className="fas fa-times fa-2x"></i>
-            <ul>
-              <Link to='/' onClick={this.handleNavClick}>
-                <li>HOME</li>
-              </Link>
-              <Link to='/articles' onClick={this.handleNavClick}>
-                <li>ARTICLES</li>
-              </Link>
-              <Link to='/topics' onClick={this.handleNavClick}>
-                <li>TOPICS</li>
-              </Link>
-            </ul>
-          </div>
-        }
+          {navOpen &&
+            <div className={`navDrawer${navOpen}`}>
+              <i onClick={this.handleNavClick} className="fas fa-times fa-2x"></i>
+              <ul>
+                <Link to='/' onClick={this.handleNavClick}>
+                  <li>HOME</li>
+                </Link>
+                <Link to='/articles' onClick={this.handleNavClick}>
+                  <li>ARTICLES</li>
+                </Link>
+                <Link to='/topics' onClick={this.handleNavClick}>
+                  <li>TOPICS</li>
+                </Link>
+              </ul>
+            </div>
+          }
+        </div>
+        <div className='bigScreenNav'>
+          <ul>
+            <Link to='/'>
+              <li>HOME</li>
+            </Link>
+            <Link to='/articles'>
+              <li>ARTICLES</li>
+            </Link>
+            <Link to='/topics'>
+              <li>TOPICS</li>
+            </Link>
+          </ul>
+        </div>
+
+
       </nav>
     )
   }

@@ -56,12 +56,12 @@ class CommentList extends React.Component {
         return (
             <div>
                 <CommentHeader>
-                <h3>comments</h3>
-                {!noInteraction &&
-                    <CommentAdder path='/article/:article_id' article_id={article_id} user={user} addCommentToList={this.addCommentToList} />
-                }
+                    <h3>Comments</h3>
+                    {!noInteraction &&
+                        <CommentAdder path='/article/:article_id' article_id={article_id} user={user} addCommentToList={this.addCommentToList} />
+                    }
                 </CommentHeader>
-                <br/>
+                <br />
                 <ul>
                     {commentList.map((comment) => {
                         return <li key={comment.comment_id}><CommentCard {...comment} user={user} noInteraction={noInteraction} /></li>

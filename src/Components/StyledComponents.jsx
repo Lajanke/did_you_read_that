@@ -47,7 +47,7 @@ Sty.Article = styled.div`
         grid-area: body;
         margin: 0.3rem;
         font-size: 1rem;
-        justify-self: right;
+        justify-self: left;
     }
         
     .aDelete {
@@ -80,6 +80,18 @@ Sty.Article = styled.div`
         border-width: 1px 0 1px 0;
         margin-bottom: 0.5rem;
     }
+
+    @media only screen and (min-width: 800px) {
+        section {
+            border: none;
+        }
+
+        .aTopic {
+            width: 50%;
+            justify-self: right;
+        }
+    }
+    
 `;
 
 Sty.ArticleCard = styled.div`
@@ -144,6 +156,12 @@ Sty.ArticleCard = styled.div`
         border-width: 0 0 1px 0;
         margin-bottom: 0.5rem;
     }
+
+    @media only screen and (min-width: 800px) {
+        section {
+            border: none;
+        }
+    }
 `;
 
 Sty.CommentCard = styled.div`   
@@ -207,6 +225,12 @@ Sty.CommentCard = styled.div`
         border-width: 0 0 1px 0;
         margin-bottom: 0.5rem;
     }
+
+    @media only screen and (min-width: 800px) {
+        section {
+            border: none;
+        }
+    }
 `;
 
 Sty.Subheader = styled.div`
@@ -264,7 +288,7 @@ button {
 .titleTextArea {
     grid-area: titleText;
     font-size: 1rem;
-    width: 225px;
+    width: 80%;
     border-style: none;
     margin: 0.5rem 0 0.5rem 0;
 }
@@ -272,7 +296,7 @@ button {
 .bodyTextArea {
     grid-area: articleText;
     font-size: 1rem;
-    width: 225px;
+    width: 80%;
     border-style: none;
     margin: 0.5rem 0 0.5rem 0;
 }
@@ -280,14 +304,15 @@ button {
 select {
     grid-area: select;
     font-size: 1rem; 
-    width: 225px;
-    margin: 0.5rem 0 0.5rem 0;
+    width: 80%;
+    margin: 0.5rem 0 3rem 0;
+    padding: 0.3rem 0 0.3rem 0;
 }
 
 .postButton {
     grid-area: post;
     font-size: 1rem;
-    width: 225px;
+    width: 80%;
     justify-self: right;
     margin: 0.5rem 0 0.5rem 0;
 }
@@ -295,22 +320,23 @@ select {
 .resetInput {
     grid-area: reset;
     font-size: 1rem;
-    width: 225px;
+    width: 80%;
     justify-self: right;
-    margin: 0.3rem 0 0.3rem 0;
+    margin: 0.3rem 0 0.5rem 0; 
 }
 
     p {
     grid-area: alerts;
     font-size: 1rem;
-    width: 225px;
+    width: 80%;
     justify-self: right;
     margin: 0.3rem 0 0.3rem 0;
 }
 
     form {
         margin: auto;
-        width: 300px;
+        width: 80vw;
+        max-width: 800px;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(1fr, 6);
@@ -329,6 +355,8 @@ select {
         resize: none;
         color: #272a2b;
     }
+
+    
 `;
 
 Sty.CommentForm = styled.div`
@@ -343,7 +371,8 @@ Sty.CommentForm = styled.div`
     .commentText {
         grid-area: commentText;
         font-size: 1rem;
-        width: 250px;
+        width: 50vw;
+        max-width: 600px;
         border-style: none;
         margin: 0.5rem 0 0.5rem 0;
     }
@@ -351,7 +380,8 @@ Sty.CommentForm = styled.div`
     .postButton {
         grid-area: postButton;
         font-size: 1rem;
-        width: 250px;
+        width: 50vw;
+        max-width: 600px;
         justify-self: right;
         margin: 0.5rem 0 0.5rem 0;
     }
@@ -381,6 +411,77 @@ Sty.CommentForm = styled.div`
         resize: none;
         color: #272a2b;
     }
+
+   
+`;
+
+Sty.ArticleList = styled.div`
+p {
+    margin: 0 0 1rem 0.3rem;
+}
+
+`;
+
+Sty.TopicCard = styled.div`
+        
+h2 {
+    background-color: #2d3b40;
+    padding: 0.2rem 0 0.2rem 1rem;
+    margin: 0.3rem 0 0.3rem 0;
+}
+
+p {
+    text-align: right;
+    margin: 0.5rem 0.3rem 0.5rem 0.3rem;
+}
+`;
+
+Sty.SortForm = styled.div`
+.sort_by {
+    grid-area: sortBy;
+    margin: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order {
+    grid-area: order;
+    margin: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sortButton {
+    grid-area: sortButton;
+    margin: 0.3rem;
+}
+
+form {
+    margin: 0.3rem;
+    border-width: 0 0 1px 0;
+    padding-bottom: 0.5rem;
+    border-style: dotted;
+    border-color: #2d3b40;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+        'sortBy sortBy .'
+        'order order sortButton'
+        ;
+}
+
+@media only screen and (min-width: 600px) {
+    form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    * {
+        margin: 0 0.5rem 0 0.5rem;
+    }
+}
 `;
 
 export default Sty;
