@@ -28,7 +28,7 @@ header {
   margin-top: 0.3rem;
 }
 
-/*Nav Drawer-----------------------------------------------------------*/
+/*Nav Drawer*/
 
 .navDrawerfalse {
   display: none;
@@ -203,12 +203,11 @@ a {
   .bigScreenNav ul {
     display: flex;
     flex-direction: row;
-}
+  }
 
   .bigScreenNav li {
     margin: 0.2rem 0 0.5rem 1rem;
     padding: 0.3rem;
     font-size: 1rem;
   }
-
 }

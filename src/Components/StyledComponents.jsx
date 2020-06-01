@@ -4,12 +4,12 @@ const Sty = {};
 
 Sty.AppContainer = styled.div`
     width: 100%;
-    height: 100%;
-    background: ${(props) => props.theme.colors.bg};
+    min-height: 100vh;
+    background: ${({theme: {colors}}) => colors.background};
     * {
-        color: ${(props) => props.theme.colors.text};
+        color: ${({theme: {colors}}) => colors.text};
         p, h2, h3 {
-            font-weight: ${(props) => props.theme.weights.weight};
+            font-weight: ${({theme: {weights}}) => weights.weight};
         }
 
         h1 {
@@ -344,7 +344,7 @@ Sty.ArticleAdder = styled.div`
     }
 
     .fa-lightbulb {
-        color: ${(props) => props.theme.colors.text};
+        color: ${({theme: {colors}}) => colors.text};
         margin: 0 0.3rem 0 0.3rem;
     }
 `;
@@ -585,16 +585,25 @@ form {
 Sty.ErrorDisplay = styled.div`
 
     p {
-        font-Size: 2rem;
+        font-Size: 1.5rem;
         margin: auto;
         display: flex;
         justify-content: center;
         margin-bottom: 1rem;
+        color: #b81111;
+        text-transform: uppercase;
     }
 
     img {
         display: flex;
         margin: auto;
+        max-width: 300px;
+    }
+
+    @media only screen and (min-width: 800px) {
+        img {
+            max-width: 100%;
+        }
     }
 `;
 
@@ -618,6 +627,5 @@ Sty.CommentHeader = styled.div`
         margin-right: 0.3rem;
     }
 `;
-
 
 export default Sty;

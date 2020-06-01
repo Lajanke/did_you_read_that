@@ -1,6 +1,6 @@
 import React from 'react';
-import * as api from '../utils/api';
 import { Link } from '@reach/router';
+import * as api from '../utils/api';
 import CommentList from './CommentList';
 import VotingButtons from './VotingButtons';
 import Loader from './Loader';

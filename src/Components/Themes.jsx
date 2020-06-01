@@ -1,8 +1,8 @@
 const themes = {
   dark: {
     colors: {
-      text: "#fff",
-      bg: "#272a2b",
+      text: '#fff',
+      background: '#272a2b',
     },
     weights: {
       weight: '300'
@@ -10,8 +10,8 @@ const themes = {
   },
   light: {
     colors: {
-      text: "#272a2b",
-      bg: "#fff",
+      text: '#272a2b',
+      background: '#fff',
     },
     weights: {
       weight: '400'

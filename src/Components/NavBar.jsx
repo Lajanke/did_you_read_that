@@ -14,6 +14,7 @@ class NavBar extends React.Component {
 
   render() {
     const { navOpen } = this.state;
+    
     return (
       <nav>
         <div className='smallScreenNav'>
@@ -54,8 +55,6 @@ class NavBar extends React.Component {
             </Link>
           </ul>
         </div>
-
-
       </nav>
     )
   }

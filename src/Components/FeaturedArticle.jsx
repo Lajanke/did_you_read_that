@@ -1,6 +1,6 @@
 import React from 'react';
-import * as api from '../utils/api';
 import { Link } from '@reach/router';
+import * as api from '../utils/api';
 import Loader from './Loader';
 import ErrorDisplayer from './ErrorDisplayer';
 import Article from './Article';

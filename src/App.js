@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Router } from '@reach/router';
+import { ThemeProvider } from 'styled-components';
+
 import Header from './Components/Header';
 import ArticleList from './Components/ArticleList';
 import TopicsList from './Components/TopicsList';
@@ -10,13 +12,12 @@ import ArticleAdder from './Components/ArticleAdder';
 import ArticleAdderForm from './Components/ArticleAdderForm';
 import ErrorDisplayer from './Components/ErrorDisplayer';
 import FeaturedArticle from './Components/FeaturedArticle';
-import { ThemeProvider } from 'styled-components';
 import themes from './Components/Themes'
 import Sty from './Components/StyledComponents';
 
 class App extends React.Component {
   state = {
-    user: 'jessjelly',
+    user: 'weegembump',
     theme: 'dark',
   }
 

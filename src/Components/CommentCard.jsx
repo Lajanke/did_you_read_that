@@ -49,7 +49,6 @@ class CommentCard extends React.Component {
             </Sty.CommentCard>
         )
     }
-
 }
 
 export default CommentCard;

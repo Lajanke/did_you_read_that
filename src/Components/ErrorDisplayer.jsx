@@ -7,7 +7,7 @@ const ErrorDisplayer = ({ msg }) => {
     return (
         <Sty.ErrorDisplay>
             <p>{err}</p>
-            <img src="https://media.giphy.com/media/3o6fIX5mC1mSgNU0BW/giphy.gif" alt="The good place, bad place gif"/>
+            <img src="https://media.giphy.com/media/3o6fIX5mC1mSgNU0BW/giphy.gif" alt="The good place, bad place gif" />
         </Sty.ErrorDisplay>
     )
 }

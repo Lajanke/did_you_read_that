@@ -49,7 +49,6 @@ class CommentAdder extends React.Component {
             <React.Fragment>
                 {!commentFormOpen &&
                     <React.Fragment>
-
                         <button onClick={this.handleCommentClick}><span role='img' aria-label='speech bubble'>💬 </span>New Comment</button>
                     </React.Fragment>
                 }
@@ -64,9 +63,7 @@ class CommentAdder extends React.Component {
                             <p className='alerts'>Comment cannot be only spaces!</p>
                         }
                     </Sty.CommentForm>
-
                 }
-
             </React.Fragment>
         )
     }
