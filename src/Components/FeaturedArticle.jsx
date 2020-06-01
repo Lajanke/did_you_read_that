@@ -37,7 +37,7 @@ class FeaturedArticle extends React.Component {
             <Sty.FeaturedArticle>
                 <h1>Featured Article</h1>
                 <p>See the full article and all comments <Link to={`/article/${article_id}`}>HERE</Link></p>
-                <Article article_id={article_id} p={1} limit={3} noInteraction='noInteraction' />
+                <Article article_id={article_id} p={1} limit={4} noInteraction='noInteraction' />
             </Sty.FeaturedArticle>
         )
     }

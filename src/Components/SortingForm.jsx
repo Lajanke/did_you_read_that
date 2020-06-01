@@ -17,7 +17,7 @@ class SortingForm extends React.Component {
     handleSubmitForm = (event) => {
         const { sort_by, order } = this.state
         event.preventDefault()
-        this.props.getArticles(sort_by, order)
+        this.props.setSortState(sort_by, order)
     }
 
     render() {

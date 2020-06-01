@@ -2,13 +2,16 @@ import axios from 'axios'
 
 const request = axios.create({ baseURL: 'https://lk-news.herokuapp.com/api' })
 
-export const fetchArticles = async ({ slug, author }, sort_by, order) => {
+export const fetchArticles = async ({ slug, author }, sort_by, order, p, limit) => {
+
     const { data } = await request.get('/articles', {
         params: {
             topic: slug,
             author,
             sort_by,
             order,
+            p,
+            limit
         }
     })
     return data
@@ -20,7 +23,7 @@ export const fetchArticleById = async (article_id) => {
 }
 
 export const fetchComments = async ({ article_id, p, limit }) => {
-    const { data: { comments } } = await request.get(`/articles/${article_id}/comments`, {params: {p, limit}})
+    const { data: { comments } } = await request.get(`/articles/${article_id}/comments`, { params: { p, limit } })
     return comments
 }
 
@@ -41,8 +44,8 @@ export const postNewComment = async ({ article_id, body, user }) => {
 }
 
 export const deleteById = async (id, type) => {
-        const { data: { msg }} = await request.delete(`/${type}/${id}`)
-        return msg
+    const { data: { msg } } = await request.delete(`/${type}/${id}`)
+    return msg
 }
 
 export const patchVotes = async (num, id, type) => {
@@ -52,6 +55,6 @@ export const patchVotes = async (num, id, type) => {
 
 export const postNewArticle = async (title, topic, body, user) => {
     const submittedComment = { 'author': user, 'body': body, 'topic': topic, 'title': title }
-        const { data: { article } } = await request.post('/articles', submittedComment)
-        return article
+    const { data: { article } } = await request.post('/articles', submittedComment)
+    return article
 }
