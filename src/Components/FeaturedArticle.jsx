@@ -4,7 +4,6 @@ import { Link } from '@reach/router';
 import Loader from './Loader';
 import ErrorDisplayer from './ErrorDisplayer';
 import Article from './Article';
-import styled from 'styled-components';
 import Sty from './StyledComponents';
 
 class FeaturedArticle extends React.Component {
@@ -34,14 +33,10 @@ class FeaturedArticle extends React.Component {
         if (deleted) return <p>Article deleted</p>
         if (err) return <ErrorDisplayer msg={err} />
 
-        const P = styled.div`
-            margin: 1rem 0.3rem 1rem 0.3rem;
-        `;
-
         return (
             <Sty.FeaturedArticle>
                 <h1>Featured Article</h1>
-                <P>See the full article and all comments <Link to={`/article/${article_id}`}>HERE</Link></P>
+                <p>See the full article and all comments <Link to={`/article/${article_id}`}>HERE</Link></p>
                 <Article article_id={article_id} p={1} limit={3} noInteraction='noInteraction' />
             </Sty.FeaturedArticle>
         )

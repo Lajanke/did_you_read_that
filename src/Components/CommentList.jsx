@@ -4,7 +4,7 @@ import CommentCard from './CommentCard';
 import CommentAdder from './CommentAdder';
 import Loader from './Loader';
 import ErrorDisplayer from './ErrorDisplayer';
-import styled from 'styled-components';
+import Sty from './StyledComponents';
 
 class CommentList extends React.Component {
     state = {
@@ -40,27 +40,14 @@ class CommentList extends React.Component {
         if (isLoading) return <Loader />
         if (err) return <ErrorDisplayer msg={err} />
 
-        const CommentHeader = styled.div`
-            display: flex;
-            justify-content: space-between;
-
-            h3 {
-                margin: 0 0.3rem 0 0.3rem;
-            }
-
-            button {
-                margin-right: 0.3rem;
-            }
-        `;
-
         return (
             <div>
-                <CommentHeader>
+                <Sty.CommentHeader>
                     <h3>Comments</h3>
                     {!noInteraction &&
                         <CommentAdder path='/article/:article_id' article_id={article_id} user={user} addCommentToList={this.addCommentToList} />
                     }
-                </CommentHeader>
+                </Sty.CommentHeader>
                 <br />
                 <ul>
                     {commentList.map((comment) => {

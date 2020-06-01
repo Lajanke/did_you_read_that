@@ -3,7 +3,7 @@ import * as api from '../utils/api';
 import ArticleList from './ArticleList';
 import Loader from './Loader';
 import ErrorDisplayer from './ErrorDisplayer';
-import styled from 'styled-components';
+import Sty from './StyledComponents';
 
 class User extends React.Component {
     state = {
@@ -32,20 +32,12 @@ class User extends React.Component {
         if (isLoading) return <Loader />
         if (err) return <ErrorDisplayer msg={err} />
 
-        const User = styled.div`
-            img {
-                max-height: 100px;
-                max-width: 100px;
-                margin-left: 0.5rem;
-            }
-        `;
-
         return (
-            <User>
+            <Sty.User>
                 <h1>{username}</h1>
                 <img src={avatar_url} alt={`${username} avatar`} />
                 <ArticleList author={username} />
-            </User>
+            </Sty.User>
         )
     }
 }

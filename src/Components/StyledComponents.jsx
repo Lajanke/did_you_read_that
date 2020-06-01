@@ -68,9 +68,13 @@ Sty.NavButtons = styled.div`
 
 Sty.FeaturedArticle = styled.div`
       h1 {
-          color: #000;
+        color: #000;
       }
-`
+
+      p {
+        margin: 1rem 0.3rem 1rem 0.3rem;
+      }  
+`;
 
 Sty.Article = styled.div`
     .aTitle {
@@ -593,5 +597,27 @@ Sty.ErrorDisplay = styled.div`
         margin: auto;
     }
 `;
+
+Sty.User = styled.div`
+    img {
+        max-height: 100px;
+        max-width: 100px;
+        margin-left: 0.5rem;
+    }
+`;
+
+Sty.CommentHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+        margin: 0 0.3rem 0 0.3rem;
+    }
+
+    button {
+        margin-right: 0.3rem;
+    }
+`;
+
 
 export default Sty;
